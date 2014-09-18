@@ -31,12 +31,12 @@ class ofxUISlider_ : public ofxUIWidgetWithLabel
 {
 public:
     ofxUISlider_();
-    ofxUISlider_(string _name, T _min, T _max, T _value, float w, float h, float x = 0, float y = 0);
-    ofxUISlider_(string _name, T _min, T _max, T *_value, float w, float h, float x = 0, float y = 0);
+    ofxUISlider_(string _name, T _min, T _max, ofParameter<T> _value, float w, float h, float x = 0, float y = 0);
+    ofxUISlider_(string _name, T _min, T _max, ofParameter<T> *_value, float w, float h, float x = 0, float y = 0);
     ~ofxUISlider_();
     void setKind();
     void setOrientation(float w, float h);
-    virtual void init(string _name, T _min, T _max, T *_value, float w, float h, float x, float y);
+    virtual void init(string _name, T _min, T _max, ofParameter<T> *_value, float w, float h, float x, float y);
     
     virtual void update();
     
@@ -105,7 +105,7 @@ protected:
     bool bRoundedToNearestInt;
     bool bClampValue;
     double value, increment;
-    T *valueRef;
+    ofParameter<T> *valueRef;
     bool useReference;
 	T max, min;
     int labelPrecision;

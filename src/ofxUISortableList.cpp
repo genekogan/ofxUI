@@ -27,7 +27,7 @@
 
 // TODO easing
 
-ofxUISortableList::ofxUISortableList(string _name, vector<string> items, float w, float h, float x, float y, int _size) : ofxUIButton(_name, false, w, h, x, y, _size)
+ofxUISortableList::ofxUISortableList(string _name, vector<string> items, float w, float h, float x, float y, int _size) : ofxUIButton(_name, new ofParameter<bool>(), w, h, x, y, _size)
 {
     init(_name, items, w, x, y, _size);
 }

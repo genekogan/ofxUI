@@ -25,31 +25,31 @@
 #include "ofxUIImageSlider.h"
 #include "ofxUI.h"
 
-ofxUIImageSlider::ofxUIImageSlider(float x, float y, float w, float h, float _min, float _max, float _value, string _pathURL, string _name) : ofxUISlider()
+ofxUIImageSlider::ofxUIImageSlider(float x, float y, float w, float h, float _min, float _max, ofParameter<float> _value, string _pathURL, string _name) : ofxUISlider()
 {
     useReference = false;
     init(x, y, w, h, _min, _max, &_value, _pathURL, _name);
 }
 
-ofxUIImageSlider::ofxUIImageSlider(float w, float h, float _min, float _max, float _value, string _pathURL, string _name) : ofxUISlider()
+ofxUIImageSlider::ofxUIImageSlider(float w, float h, float _min, float _max, ofParameter<float> _value, string _pathURL, string _name) : ofxUISlider()
 {
     useReference = false;
     init(0, 0, w, h, _min, _max, &_value, _pathURL, _name);
 }
 
-ofxUIImageSlider::ofxUIImageSlider(float x, float y, float w, float h, float _min, float _max, float *_value, string _pathURL, string _name) : ofxUISlider()
+ofxUIImageSlider::ofxUIImageSlider(float x, float y, float w, float h, float _min, float _max, ofParameter<float> *_value, string _pathURL, string _name) : ofxUISlider()
 {
     useReference = true;
     init(x, y, w, h, _min, _max, _value, _pathURL, _name);
 }
 
-ofxUIImageSlider::ofxUIImageSlider(float w, float h, float _min, float _max, float *_value, string _pathURL, string _name) : ofxUISlider()
+ofxUIImageSlider::ofxUIImageSlider(float w, float h, float _min, float _max, ofParameter<float> *_value, string _pathURL, string _name) : ofxUISlider()
 {
     useReference = true;
     init(0, 0, w, h, _min, _max, _value, _pathURL, _name);
 }
 
-void ofxUIImageSlider::init(float x, float y, float w, float h, float _min, float _max, float *_value, string _pathURL, string _name)
+void ofxUIImageSlider::init(float x, float y, float w, float h, float _min, float _max, ofParameter<float> *_value, string _pathURL, string _name)
 {
     initRect(x, y, w, h);
     name = string(_name);
@@ -71,7 +71,7 @@ void ofxUIImageSlider::init(float x, float y, float w, float h, float _min, floa
     }
     else
     {
-        valueRef = new float();
+        valueRef = new ofParameter<float>();
         *valueRef = value;
     }
     

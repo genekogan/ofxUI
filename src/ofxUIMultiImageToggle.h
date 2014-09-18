@@ -30,12 +30,12 @@
 class ofxUIMultiImageToggle : public ofxUIToggle
 {
 public:        
-    ofxUIMultiImageToggle(float x, float y, float w, float h, bool _value, string _pathURL, string _name,  int _size = OFX_UI_FONT_SMALL);
-    ofxUIMultiImageToggle(float w, float h, bool _value, string _pathURL, string _name, int _size = OFX_UI_FONT_SMALL);
-    ofxUIMultiImageToggle(float x, float y, float w, float h, bool *_value, string _pathURL, string _name,  int _size = OFX_UI_FONT_SMALL);
-    ofxUIMultiImageToggle(float w, float h, bool *_value, string _pathURL, string _name, int _size = OFX_UI_FONT_SMALL);
+    ofxUIMultiImageToggle(float x, float y, float w, float h, ofParameter<bool> _value, string _pathURL, string _name,  int _size = OFX_UI_FONT_SMALL);
+    ofxUIMultiImageToggle(float w, float h, ofParameter<bool> _value, string _pathURL, string _name, int _size = OFX_UI_FONT_SMALL);
+    ofxUIMultiImageToggle(float x, float y, float w, float h, ofParameter<bool> *_value, string _pathURL, string _name,  int _size = OFX_UI_FONT_SMALL);
+    ofxUIMultiImageToggle(float w, float h, ofParameter<bool> *_value, string _pathURL, string _name, int _size = OFX_UI_FONT_SMALL);
     ~ofxUIMultiImageToggle();
-    void init(float x, float y, float w, float h, bool *_value, string _pathURL, string _name, int _size = OFX_UI_FONT_SMALL);
+    void init(float x, float y, float w, float h, ofParameter<bool> *_value, string _pathURL, string _name, int _size = OFX_UI_FONT_SMALL);
     void drawBack();
     void drawOutlineHighlight();
     void drawFill();

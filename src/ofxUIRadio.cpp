@@ -49,7 +49,8 @@ void ofxUIRadio::init(string _name, vector<string> names, int _orientation, floa
         for(unsigned int i = 0; i < names.size(); i++)
         {
             string tname = names[i];
-            ofxUIToggle *toggle = new ofxUIToggle(tname, false, w, h, 0, 0, _size);
+            //ofxUIToggle *toggle = new ofxUIToggle(tname, false, w, h, 0, 0, _size);
+            ofxUIToggle *toggle = new ofxUIToggle(tname, new ofParameter<bool>(), w, h, 0, 0, _size);
             addEmbeddedWidget(toggle);
             toggles.push_back(toggle);            
         }

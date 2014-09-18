@@ -25,19 +25,19 @@
 #include "ofxUIMinimalSlider.h"
 #include "ofxUI.h"
 
-ofxUIMinimalSlider::ofxUIMinimalSlider(string _name, float _min, float _max, float _value, float w, float h, float x, float y, int _size) : ofxUISlider()
+ofxUIMinimalSlider::ofxUIMinimalSlider(string _name, float _min, float _max, ofParameter<float> _value, float w, float h, float x, float y, int _size) : ofxUISlider()
 {
     useReference = false;
     init(_name, _min, _max, &_value, w, h, x, y, _size);
 }
 
-ofxUIMinimalSlider::ofxUIMinimalSlider(string _name, float _min, float _max, float *_value, float w, float h, float x, float y, int _size) : ofxUISlider()
+ofxUIMinimalSlider::ofxUIMinimalSlider(string _name, float _min, float _max, ofParameter<float> *_value, float w, float h, float x, float y, int _size) : ofxUISlider()
 {
     useReference = true;
     init(_name, _min, _max, _value, w, h, x, y, _size);
 }
 
-void ofxUIMinimalSlider::init(string _name, float _min, float _max, float *_value, float w, float h, float x, float y, int _size)
+void ofxUIMinimalSlider::init(string _name, float _min, float _max, ofParameter<float> *_value, float w, float h, float x, float y, int _size)
 {
     if(h < .1)
     {
@@ -62,7 +62,7 @@ void ofxUIMinimalSlider::init(string _name, float _min, float _max, float *_valu
     }
     else
     {
-        valueRef = new float();
+        valueRef = new ofParameter<float>();
         *valueRef = value;
     }
     

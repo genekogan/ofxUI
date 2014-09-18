@@ -51,7 +51,7 @@ void ofxUIToggleMatrix::init(float x, float y, float w, float h, int _rows, int 
     {
         for(int i = 0; i < cols; i++)
         {
-            ofxUIToggle *toggle = new ofxUIToggle((name+"("+ofxUIToString(i,0)+","+ofxUIToString(j,0)+")"), false, toggleWidth, toggleHeight, 0, 0, OFX_UI_FONT_SMALL);
+            ofxUIToggle *toggle = new ofxUIToggle((name+"("+ofxUIToString(i,0)+","+ofxUIToString(j,0)+")"), new ofParameter<bool>(), toggleWidth, toggleHeight, 0, 0, OFX_UI_FONT_SMALL);
             toggle->setLabelVisible(false);
             addEmbeddedWidget(toggle);
             toggles.push_back(toggle);

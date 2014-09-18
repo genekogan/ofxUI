@@ -30,31 +30,31 @@ ofxUIImageButton::ofxUIImageButton() : ofxUIButton()
     
 }
 
-ofxUIImageButton::ofxUIImageButton(float x, float y, float w, float h, bool _value, string _pathURL, string _name, int _size) : ofxUIButton()
+ofxUIImageButton::ofxUIImageButton(float x, float y, float w, float h, ofParameter<bool> _value, string _pathURL, string _name, int _size) : ofxUIButton()
 {
     useReference = false;
     init(x, y, w, h, &_value, _pathURL, _name, _size);
 }
 
-ofxUIImageButton::ofxUIImageButton(float w, float h, bool _value, string _pathURL, string _name, int _size) : ofxUIButton()
+ofxUIImageButton::ofxUIImageButton(float w, float h, ofParameter<bool> _value, string _pathURL, string _name, int _size) : ofxUIButton()
 {
     useReference = false;
     init(0, 0, w, h, &_value, _pathURL, _name, _size);
 }
 
-ofxUIImageButton::ofxUIImageButton(float x, float y, float w, float h, bool *_value, string _pathURL, string _name, int _size) : ofxUIButton()
+ofxUIImageButton::ofxUIImageButton(float x, float y, float w, float h, ofParameter<bool> *_value, string _pathURL, string _name, int _size) : ofxUIButton()
 {
     useReference = true;
     init(x, y, w, h, _value, _pathURL, _name, _size);
 }
 
-ofxUIImageButton::ofxUIImageButton(float w, float h, bool *_value, string _pathURL, string _name, int _size) : ofxUIButton()
+ofxUIImageButton::ofxUIImageButton(float w, float h, ofParameter<bool> *_value, string _pathURL, string _name, int _size) : ofxUIButton()
 {
     useReference = true;
     init(0, 0, w, h, _value, _pathURL, _name, _size);
 }
 
-void ofxUIImageButton::init(float x, float y, float w, float h, bool *_value, string _pathURL, string _name, int _size)
+void ofxUIImageButton::init(float x, float y, float w, float h, ofParameter<bool> *_value, string _pathURL, string _name, int _size)
 {
     initRect(0,0,w,h);
     name = string(_name);
@@ -70,7 +70,7 @@ void ofxUIImageButton::init(float x, float y, float w, float h, bool *_value, st
     }
     else
     {
-        value = new bool();
+        value = new ofParameter<bool>();
         *value = *_value;
     }
     

@@ -326,8 +326,8 @@ void ofApp::setGUI1()
     
     gui1->addSpacer();
     gui1->setWidgetFontSize(OFX_UI_FONT_SMALL);
-	gui1->addButton("BUTTON", false);
-	gui1->addToggle( "TOGGLE", false);
+	gui1->addButton("BUTTON", new ofParameter<bool>());
+	gui1->addToggle( "TOGGLE", new ofParameter<bool>());
     
     gui1->addSpacer();
     gui1->addLabel("RANGE SLIDER");
@@ -348,10 +348,11 @@ void ofApp::setGUI2()
     
     gui2->addSpacer();
 	gui2->setWidgetFontSize(OFX_UI_FONT_MEDIUM);
-    textInput = gui2->addTextInput("TEXT INPUT", "Input Text");
-    textInput->setAutoUnfocus(false); 
+    textInput = gui2->addTextInput("TEXT INPUT", &text1, 100.0f);
+    textInput->setAutoUnfocus(false);
+    
     gui2->addLabel("AUTO CLEAR DISABLED", OFX_UI_FONT_SMALL);
-    gui2->addTextInput("TEXT INPUT2", "Input Text")->setAutoClear(false);
+    gui2->addTextInput("TEXT INPUT2", &text2)->setAutoClear(false);
 	gui2->setWidgetFontSize(OFX_UI_FONT_MEDIUM);
 
     gui2->addSpacer();
@@ -384,11 +385,11 @@ void ofApp::setGUI2()
     
     gui2->addSpacer();
     gui2->addLabel("LABEL BUTTON", OFX_UI_FONT_MEDIUM);
-    gui2->addLabelButton("LABEL BTN", false);
+    gui2->addLabelButton("LABEL BTN", new ofParameter<bool>());
     
     gui2->addSpacer();
     gui2->addLabel("LABEL TOGGLES", OFX_UI_FONT_MEDIUM);
-    gui2->addLabelToggle("LABEL TGL", false)->getLabelWidget()->setColorFill(ofColor(255, 0, 0));
+    gui2->addLabelToggle("LABEL TGL", new ofParameter<bool>())->getLabelWidget()->setColorFill(ofColor(255, 0, 0));
     
     gui2->setPosition(212, 0);
     gui2->autoSizeToFitWidgets();
@@ -409,9 +410,9 @@ void ofApp::setGUI3()
 
     gui3->addSpacer();
     gui3->setGlobalButtonDimension(64);
-    gui3->addImageButton("IMAGEBTN", "GUI/images/App.png", false);
+    gui3->addImageButton("IMAGEBTN", "GUI/images/App.png", new ofParameter<bool>());
     gui3->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    gui3->addImageToggle("IMAGETGL", "GUI/images/Preview.png", false);
+    gui3->addImageToggle("IMAGETGL", "GUI/images/Preview.png", new ofParameter<bool>());
     gui3->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
 
     gui3->addSpacer();
@@ -455,17 +456,17 @@ void ofApp::setGUI4()
     gui4->addLabel("IMAGE SAMPLER", OFX_UI_FONT_MEDIUM);
     gui4->addImageSampler("SAMPLER", img);
     gui4->setGlobalButtonDimension(64); 
-    gui4->addMultiImageButton("IMAGE BUTTON", "GUI/toggle.png", false);
+    gui4->addMultiImageButton("IMAGE BUTTON", "GUI/toggle.png", new ofParameter<bool>());
     gui4->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
-    gui4->addMultiImageToggle("IMAGE TOGGLE", "GUI/toggle.png", false);
+    gui4->addMultiImageToggle("IMAGE TOGGLE", "GUI/toggle.png", new ofParameter<bool>());
     gui4->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     
     gui4->addBaseDraws("BASE DRAW", img, true);
 
     gui4->addSpacer();
     gui4->setGlobalButtonDimension(32);
-    gui4->addButton("BTN", false)->setLabelVisible(false);
-    gui4->addToggle("TGL", false)->setLabelVisible(false);
+    gui4->addButton("BTN", new ofParameter<bool>())->setLabelVisible(false);
+    gui4->addToggle("TGL", new ofParameter<bool>())->setLabelVisible(false);
     
     gui4->setPosition(212*3,0);
     gui4->autoSizeToFitWidgets();
@@ -479,7 +480,7 @@ void ofApp::setGUI5()
     gui5->addSpacer();
     
 	gui5->addLabel("2D PAD");
-	gui5->add2DPad("PAD", ofPoint(-100, 100), ofPoint(-100,100), ofPoint(0,0));
+	gui5->add2DPad("PAD", ofVec2f(-100, 100), ofVec2f(-100,100), &pad);
 
     gui5->addSpacer();
     gui5->addLabel("ROTARY SLIDER", OFX_UI_FONT_MEDIUM);

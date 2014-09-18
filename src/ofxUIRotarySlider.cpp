@@ -25,25 +25,25 @@
 #include "ofxUIRotarySlider.h"
 #include "ofxUI.h"
 
-ofxUIRotarySlider::ofxUIRotarySlider(float x, float y, float w, float _min, float _max, float _value, string _name, int _size) : ofxUIWidgetWithLabel()
+ofxUIRotarySlider::ofxUIRotarySlider(float x, float y, float w, float _min, float _max, ofParameter<float> _value, string _name, int _size) : ofxUIWidgetWithLabel()
 {
     useReference = false;
     init(x, y, w, _min, _max, &_value, _name, _size);
 }
 
-ofxUIRotarySlider::ofxUIRotarySlider(float w, float _min, float _max, float _value, string _name, int _size) : ofxUIWidgetWithLabel()
+ofxUIRotarySlider::ofxUIRotarySlider(float w, float _min, float _max, ofParameter<float> _value, string _name, int _size) : ofxUIWidgetWithLabel()
 {
     useReference = false;
     init(0, 0, w, _min, _max, &_value, _name, _size);
 }
 
-ofxUIRotarySlider::ofxUIRotarySlider(float x, float y, float w, float _min, float _max, float *_value, string _name, int _size) : ofxUIWidgetWithLabel()
+ofxUIRotarySlider::ofxUIRotarySlider(float x, float y, float w, float _min, float _max, ofParameter<float> *_value, string _name, int _size) : ofxUIWidgetWithLabel()
 {
     useReference = true;
     init(x, y, w, _min, _max, _value, _name, _size);
 }
 
-ofxUIRotarySlider::ofxUIRotarySlider(float w, float _min, float _max, float *_value, string _name, int _size) : ofxUIWidgetWithLabel()
+ofxUIRotarySlider::ofxUIRotarySlider(float w, float _min, float _max, ofParameter<float> *_value, string _name, int _size) : ofxUIWidgetWithLabel()
 {
     useReference = true;
     init(0, 0, w, _min, _max, _value, _name, _size);
@@ -57,7 +57,7 @@ ofxUIRotarySlider::~ofxUIRotarySlider()
     }
 }
 
-void ofxUIRotarySlider::init(float x, float y, float w, float _min, float _max, float *_value, string _name, int _size)
+void ofxUIRotarySlider::init(float x, float y, float w, float _min, float _max, ofParameter<float> *_value, string _name, int _size)
 {
     initRect(x,y,w,w);
     name = string(_name);
@@ -72,7 +72,7 @@ void ofxUIRotarySlider::init(float x, float y, float w, float _min, float _max, 
     }
     else
     {
-        valueRef = new float();
+        valueRef = new ofParameter<float>();
         *valueRef = value;
     }
     

@@ -25,19 +25,19 @@
 #include "ofxUILabelToggle.h"
 #include "ofxUI.h"
 
-ofxUILabelToggle::ofxUILabelToggle(string _name, bool _value, float w, float h, float x, float y, int _size, bool _justifyLeft) : ofxUIToggle()
+ofxUILabelToggle::ofxUILabelToggle(string _name, ofParameter<bool> _value, float w, float h, float x, float y, int _size, bool _justifyLeft) : ofxUIToggle()
 {
     useReference = false;
     init(_name, &_value, w, h, x, y, _size, _justifyLeft);
 }
 
-ofxUILabelToggle::ofxUILabelToggle(string _name, bool *_value, float w, float h, float x, float y, int _size, bool _justifyLeft) : ofxUIToggle()
+ofxUILabelToggle::ofxUILabelToggle(string _name, ofParameter<bool> *_value, float w, float h, float x, float y, int _size, bool _justifyLeft) : ofxUIToggle()
 {
     useReference = true;
     init(_name, _value, w, h, x, y, _size, _justifyLeft);
 }
 
-void ofxUILabelToggle::init(string _name, bool *_value, float w, float h, float x, float y, int _size, bool _justifyLeft)
+void ofxUILabelToggle::init(string _name, ofParameter<bool> *_value, float w, float h, float x, float y, int _size, bool _justifyLeft)
 {
     initRect(x,y,w,h);
     autoSize = (w == 0) ? true : false;
@@ -54,7 +54,7 @@ void ofxUILabelToggle::init(string _name, bool *_value, float w, float h, float 
     }
     else
     {
-        value = new bool();
+        value = new ofParameter<bool>();
         *value = *_value;
     }
     

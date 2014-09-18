@@ -25,55 +25,55 @@
 #include "ofxUIBiLabelSlider.h"
 #include "ofxUI.h"
 
-ofxUIBiLabelSlider::ofxUIBiLabelSlider(float x, float y, float w, float h, float _min, float _max, float _value, string _name, string _leftLabel, string _rightLabel, int _size) : ofxUISlider()
+ofxUIBiLabelSlider::ofxUIBiLabelSlider(float x, float y, float w, float h, float _min, float _max, ofParameter<float> _value, string _name, string _leftLabel, string _rightLabel, int _size) : ofxUISlider()
 {
     useReference = false;
     init(x, y, w, h, _min, _max, &_value, _name, _leftLabel, _rightLabel, _size);
 }
 
-ofxUIBiLabelSlider::ofxUIBiLabelSlider(float w, float h, float _min, float _max, float _value, string _name, string _leftLabel, string _rightLabel, int _size) : ofxUISlider()
+ofxUIBiLabelSlider::ofxUIBiLabelSlider(float w, float h, float _min, float _max, ofParameter<float> _value, string _name, string _leftLabel, string _rightLabel, int _size) : ofxUISlider()
 {
     useReference = false;
     init(0, 0, w, h, _min, _max, &_value, _name, _leftLabel, _rightLabel, _size);
 }
 
-ofxUIBiLabelSlider::ofxUIBiLabelSlider(float x, float y, float w, float _min, float _max, float _value, string _name, string _leftLabel, string _rightLabel, int _size) : ofxUISlider()
+ofxUIBiLabelSlider::ofxUIBiLabelSlider(float x, float y, float w, float _min, float _max, ofParameter<float> _value, string _name, string _leftLabel, string _rightLabel, int _size) : ofxUISlider()
 {
     useReference = false;
     init(x, y, w, 0, _min, _max, &_value, _name, _leftLabel, _rightLabel, _size);
 }
 
-ofxUIBiLabelSlider::ofxUIBiLabelSlider(float w, float _min, float _max, float _value, string _name, string _leftLabel, string _rightLabel, int _size) : ofxUISlider()
+ofxUIBiLabelSlider::ofxUIBiLabelSlider(float w, float _min, float _max, ofParameter<float> _value, string _name, string _leftLabel, string _rightLabel, int _size) : ofxUISlider()
 {
     useReference = false;
     init(0, 0, w, 0, _min, _max, &_value, _name, _leftLabel, _rightLabel, _size);
 }
 
-ofxUIBiLabelSlider::ofxUIBiLabelSlider(float x, float y, float w, float h, float _min, float _max, float *_value, string _name, string _leftLabel, string _rightLabel, int _size) : ofxUISlider()
+ofxUIBiLabelSlider::ofxUIBiLabelSlider(float x, float y, float w, float h, float _min, float _max, ofParameter<float> *_value, string _name, string _leftLabel, string _rightLabel, int _size) : ofxUISlider()
 {
     useReference = true;
     init(x, y, w, h, _min, _max, _value, _name, _leftLabel, _rightLabel, _size);
 }
 
-ofxUIBiLabelSlider::ofxUIBiLabelSlider(float w, float h, float _min, float _max, float *_value, string _name, string _leftLabel, string _rightLabel, int _size) : ofxUISlider()
+ofxUIBiLabelSlider::ofxUIBiLabelSlider(float w, float h, float _min, float _max, ofParameter<float> *_value, string _name, string _leftLabel, string _rightLabel, int _size) : ofxUISlider()
 {
     useReference = true;
     init(0, 0, w, h, _min, _max, _value, _name, _leftLabel, _rightLabel, _size);
 }
 
-ofxUIBiLabelSlider::ofxUIBiLabelSlider(float x, float y, float w, float _min, float _max, float *_value, string _name, string _leftLabel, string _rightLabel, int _size) : ofxUISlider()
+ofxUIBiLabelSlider::ofxUIBiLabelSlider(float x, float y, float w, float _min, float _max, ofParameter<float> *_value, string _name, string _leftLabel, string _rightLabel, int _size) : ofxUISlider()
 {
     useReference = true;
     init(x, y, w, 0, _min, _max, _value, _name, _leftLabel, _rightLabel, _size);
 }
 
-ofxUIBiLabelSlider::ofxUIBiLabelSlider(float w, float _min, float _max, float *_value, string _name, string _leftLabel, string _rightLabel, int _size) : ofxUISlider()
+ofxUIBiLabelSlider::ofxUIBiLabelSlider(float w, float _min, float _max, ofParameter<float> *_value, string _name, string _leftLabel, string _rightLabel, int _size) : ofxUISlider()
 {
     useReference = true;
     init(0, 0, w, 0, _min, _max, _value, _name, _leftLabel, _rightLabel, _size);
 }
 
-void ofxUIBiLabelSlider::init(float x, float y, float w, float h, float _min, float _max, float *_value, string _name, string _leftLabel, string _rightLabel, int _size)
+void ofxUIBiLabelSlider::init(float x, float y, float w, float h, float _min, float _max, ofParameter<float> *_value, string _name, string _leftLabel, string _rightLabel, int _size)
 {
     (h > 0) ? autoSize = false : autoSize = true;
     initRect(x,y,w,h);
@@ -91,7 +91,7 @@ void ofxUIBiLabelSlider::init(float x, float y, float w, float h, float _min, fl
     }
     else
     {
-        valueRef = new float();
+        valueRef = new ofParameter<float>();
         *valueRef = value;
     }
     

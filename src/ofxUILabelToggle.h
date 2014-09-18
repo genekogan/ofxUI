@@ -29,9 +29,9 @@
 class ofxUILabelToggle : public ofxUIToggle
 {
 public:
-    ofxUILabelToggle(string _name, bool _value, float w = 0, float h = 0, float x = 0, float y = 0, int _size = OFX_UI_FONT_MEDIUM, bool _justifyLeft = false);
-    ofxUILabelToggle(string _name, bool *_value, float w = 0, float h = 0, float x = 0, float y = 0, int _size = OFX_UI_FONT_MEDIUM, bool _justifyLeft = false);
-    virtual void init(string _name, bool *_value, float w = 0, float h = 0, float x = 0, float y = 0, int _size = OFX_UI_FONT_MEDIUM, bool _justifyLeft = false);
+    ofxUILabelToggle(string _name, ofParameter<bool> _value, float w = 0, float h = 0, float x = 0, float y = 0, int _size = OFX_UI_FONT_MEDIUM, bool _justifyLeft = false);
+    ofxUILabelToggle(string _name, ofParameter<bool> *_value, float w = 0, float h = 0, float x = 0, float y = 0, int _size = OFX_UI_FONT_MEDIUM, bool _justifyLeft = false);
+    virtual void init(string _name, ofParameter<bool> *_value, float w = 0, float h = 0, float x = 0, float y = 0, int _size = OFX_UI_FONT_MEDIUM, bool _justifyLeft = false);
     void setLabelText(string labeltext);
 	void setParent(ofxUIWidget *_parent);
     

@@ -33,7 +33,7 @@
 <Widget>
     <Kind>5</Kind>
     <Name>2</Name>
-    <Value>65.343757629</Value>
+    <Value>84.468750000</Value>
 </Widget>
 <Widget>
     <Kind>5</Kind>
@@ -83,17 +83,17 @@
 <Widget>
     <Kind>2</Kind>
     <Name>RAD1</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>RAD2</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>RAD3</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

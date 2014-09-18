@@ -32,14 +32,14 @@ ofxUISlider_<T>::ofxUISlider_() : ofxUIWidgetWithLabel()
 }
 
 template<typename T>
-ofxUISlider_<T>::ofxUISlider_(string _name, T _min, T _max, T _value, float w, float h, float x, float y) : ofxUIWidgetWithLabel()
+ofxUISlider_<T>::ofxUISlider_(string _name, T _min, T _max, ofParameter<T> _value, float w, float h, float x, float y) : ofxUIWidgetWithLabel()
 {
     useReference = false;
     init(_name, _min, _max, &_value, w, h, x, y);
 }
 
 template<typename T>
-ofxUISlider_<T>::ofxUISlider_(string _name, T _min, T _max, T *_value, float w, float h, float x, float y) : ofxUIWidgetWithLabel()
+ofxUISlider_<T>::ofxUISlider_(string _name, T _min, T _max, ofParameter<T> *_value, float w, float h, float x, float y) : ofxUIWidgetWithLabel()
 {
     useReference = true;
     init(_name, _min, _max, _value, w, h, x, y);
@@ -55,7 +55,7 @@ ofxUISlider_<T>::~ofxUISlider_()
 }
 
 template<typename T>
-void ofxUISlider_<T>::init(string _name, T _min, T _max, T *_value, float w, float h, float x, float y)
+void ofxUISlider_<T>::init(string _name, T _min, T _max, ofParameter<T> *_value, float w, float h, float x, float y)
 {
     initRect(x,y,w,h);
     name = string(_name);
@@ -71,7 +71,7 @@ void ofxUISlider_<T>::init(string _name, T _min, T _max, T *_value, float w, flo
     }
     else
     {
-        valueRef = new T();
+        valueRef = new ofParameter<T>();
         *valueRef = value;
     }
     

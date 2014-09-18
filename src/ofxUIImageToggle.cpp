@@ -25,31 +25,31 @@
 #include "ofxUIImageToggle.h"
 #include "ofxUI.h"
 
-ofxUIImageToggle::ofxUIImageToggle(float x, float y, float w, float h, bool _value, string _pathURL, string _name, int _size) : ofxUIToggle()
+ofxUIImageToggle::ofxUIImageToggle(float x, float y, float w, float h, ofParameter<bool> _value, string _pathURL, string _name, int _size) : ofxUIToggle()
 {
     useReference = false;
     init(x, y, w, h, &_value, _pathURL, _name, _size);
 }
 
-ofxUIImageToggle::ofxUIImageToggle(float w, float h, bool _value, string _pathURL, string _name, int _size) : ofxUIToggle()
+ofxUIImageToggle::ofxUIImageToggle(float w, float h, ofParameter<bool> _value, string _pathURL, string _name, int _size) : ofxUIToggle()
 {
     useReference = false;
     init(0, 0, w, h, &_value, _pathURL, _name, _size);
 }
 
-ofxUIImageToggle::ofxUIImageToggle(float x, float y, float w, float h, bool *_value, string _pathURL, string _name, int _size) : ofxUIToggle()
+ofxUIImageToggle::ofxUIImageToggle(float x, float y, float w, float h, ofParameter<bool> *_value, string _pathURL, string _name, int _size) : ofxUIToggle()
 {
     useReference = true;
     init(x, y, w, h, _value, _pathURL, _name, _size);
 }
 
-ofxUIImageToggle::ofxUIImageToggle(float w, float h, bool *_value, string _pathURL, string _name, int _size) : ofxUIToggle()
+ofxUIImageToggle::ofxUIImageToggle(float w, float h, ofParameter<bool> *_value, string _pathURL, string _name, int _size) : ofxUIToggle()
 {
     useReference = true;
     init(0, 0, w, h, _value, _pathURL, _name, _size);
 }
 
-void ofxUIImageToggle::init(float x, float y, float w, float h, bool *_value, string _pathURL, string _name, int _size)
+void ofxUIImageToggle::init(float x, float y, float w, float h, ofParameter<bool> *_value, string _pathURL, string _name, int _size)
 {
     initRect(x, y, w, h);
     name = string(_name);
@@ -66,7 +66,7 @@ void ofxUIImageToggle::init(float x, float y, float w, float h, bool *_value, st
     }
     else
     {
-        value = new bool();
+        value = new ofParameter<bool>();
         *value = *_value;
     }
     

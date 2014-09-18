@@ -31,7 +31,7 @@ class ofxUILabelButton : public ofxUIButton
 {
 public:
     ofxUILabelButton(string _name,
-                     bool _value,
+                     ofParameter<bool> _value,
                      float w = 0,
                      float h = 0,
                      float x = 0,
@@ -40,7 +40,7 @@ public:
                      bool _justifyLeft = false);
     
     ofxUILabelButton(string _name,
-                     bool *_value,
+                     ofParameter<bool> *_value,
                      float w = 0,
                      float h = 0,
                      float x = 0,
@@ -49,7 +49,7 @@ public:
                      bool _justifyLeft = false);
     
     virtual void init(string _name,
-                      bool *_value,
+                      ofParameter<bool> *_value,
                       float w,
                       float h,
                       float x = 0,

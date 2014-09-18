@@ -26,25 +26,25 @@
 #include "ofxUI.h"
 #include <math.h>
 
-ofxUINumberDialer::ofxUINumberDialer(float x, float y, float _min, float _max, float _value, int _precision, string _name, int _size) : ofxUIWidgetWithLabel()
+ofxUINumberDialer::ofxUINumberDialer(float x, float y, float _min, float _max, ofParameter<float> _value, int _precision, string _name, int _size) : ofxUIWidgetWithLabel()
 {
     useReference = false;
     init(x,y,0,0, _min, _max, &_value, _precision, _name, _size);
 }
 
-ofxUINumberDialer::ofxUINumberDialer(float _min, float _max, float _value, int _precision, string _name, int _size) : ofxUIWidgetWithLabel()
+ofxUINumberDialer::ofxUINumberDialer(float _min, float _max, ofParameter<float> _value, int _precision, string _name, int _size) : ofxUIWidgetWithLabel()
 {
     useReference = false;
     init(0,0,0,0, _min, _max, &_value, _precision, _name, _size);
 }
 
-ofxUINumberDialer::ofxUINumberDialer(float x, float y, float _min, float _max, float *_value, int _precision, string _name, int _size) : ofxUIWidgetWithLabel()
+ofxUINumberDialer::ofxUINumberDialer(float x, float y, float _min, float _max, ofParameter<float> *_value, int _precision, string _name, int _size) : ofxUIWidgetWithLabel()
 {
     useReference = true;
     init(x,y,0,0, _min, _max, _value, _precision, _name, _size);
 }
 
-ofxUINumberDialer::ofxUINumberDialer(float _min, float _max, float *_value, int _precision, string _name, int _size) : ofxUIWidgetWithLabel()
+ofxUINumberDialer::ofxUINumberDialer(float _min, float _max, ofParameter<float> *_value, int _precision, string _name, int _size) : ofxUIWidgetWithLabel()
 {
     useReference = true;
     init(0,0,0,0, _min, _max, _value, _precision, _name, _size);
@@ -58,7 +58,7 @@ ofxUINumberDialer::~ofxUINumberDialer()
     }
 }
 
-void ofxUINumberDialer::init(float x, float y, float w, float h, float _min, float _max, float *_value, int _precision, string _name, int _size)
+void ofxUINumberDialer::init(float x, float y, float w, float h, float _min, float _max, ofParameter<float> *_value, int _precision, string _name, int _size)
 {
     initRect(x, y, w, h);
     name = string(_name);
@@ -70,7 +70,7 @@ void ofxUINumberDialer::init(float x, float y, float w, float h, float _min, flo
     }
     else
     {
-        value = new float();
+        value = new ofParameter<float>();
         *value = (*_value);
     }
     

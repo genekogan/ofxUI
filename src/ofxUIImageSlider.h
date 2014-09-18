@@ -30,13 +30,13 @@
 class ofxUIImageSlider : public ofxUISlider         ///** I need to simplify this widget to only use one image as the handle of the slider
 {
 public:    
-    ofxUIImageSlider(float x, float y, float w, float h, float _min, float _max, float _value, string _pathURL, string _name);
-    ofxUIImageSlider(float w, float h, float _min, float _max, float _value, string _pathURL, string _name);
-    ofxUIImageSlider(float x, float y, float w, float h, float _min, float _max, float *_value, string _pathURL, string _name);
-    ofxUIImageSlider(float w, float h, float _min, float _max, float *_value, string _pathURL, string _name);
+    ofxUIImageSlider(float x, float y, float w, float h, float _min, float _max, ofParameter<float> _value, string _pathURL, string _name);
+    ofxUIImageSlider(float w, float h, float _min, float _max, ofParameter<float> _value, string _pathURL, string _name);
+    ofxUIImageSlider(float x, float y, float w, float h, float _min, float _max, ofParameter<float> *_value, string _pathURL, string _name);
+    ofxUIImageSlider(float w, float h, float _min, float _max, ofParameter<float> *_value, string _pathURL, string _name);
     ~ofxUIImageSlider();
     
-    virtual void init(float x, float y, float w, float h, float _min, float _max, float *_value, string _pathURL, string _name);
+    virtual void init(float x, float y, float w, float h, float _min, float _max, ofParameter<float> *_value, string _pathURL, string _name);
     
     virtual void drawBack();
     virtual void drawOutline();
