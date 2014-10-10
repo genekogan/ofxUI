@@ -25,31 +25,31 @@
 #include "ofxUICircleSlider.h"
 #include "ofxUI.h"
 
-ofxUICircleSlider::ofxUICircleSlider(float x, float y, float w, float _min, float _max, ofParameter<float> _value, string _name, int _size) : ofxUISlider()
+ofxUICircleSlider::ofxUICircleSlider(float x, float y, float w, float _min, float _max, float _value, string _name, int _size) : ofxUISlider()
 {
     useReference = false;
     init(x, y, w, w, _min, _max, &_value, _name, _size);
 }
 
-ofxUICircleSlider::ofxUICircleSlider(float w, float _min, float _max, ofParameter<float> _value, string _name, int _size) : ofxUISlider()
+ofxUICircleSlider::ofxUICircleSlider(float w, float _min, float _max, float _value, string _name, int _size) : ofxUISlider()
 {
     useReference = false;
     init(0, 0, w, w, _min, _max, &_value, _name, _size);
 }
 
-ofxUICircleSlider::ofxUICircleSlider(float x, float y, float w, float _min, float _max, ofParameter<float> *_value, string _name, int _size) : ofxUISlider()
+ofxUICircleSlider::ofxUICircleSlider(float x, float y, float w, float _min, float _max, float *_value, string _name, int _size) : ofxUISlider()
 {
     useReference = true;
     init(x, y, w, w, _min, _max, _value, _name, _size);
 }
 
-ofxUICircleSlider::ofxUICircleSlider(float w, float _min, float _max, ofParameter<float> *_value, string _name, int _size) : ofxUISlider()
+ofxUICircleSlider::ofxUICircleSlider(float w, float _min, float _max, float *_value, string _name, int _size) : ofxUISlider()
 {
     useReference = true;
     init(0, 0, w, w, _min, _max, _value, _name, _size);
 }
 
-void ofxUICircleSlider::init(float x, float y, float w, float h, float _min, float _max, ofParameter<float> *_value, string _name, int _size)
+void ofxUICircleSlider::init(float x, float y, float w, float h, float _min, float _max, float *_value, string _name, int _size)
 {
     initRect(x,y,w,h);
     name = string(_name);
@@ -65,7 +65,7 @@ void ofxUICircleSlider::init(float x, float y, float w, float h, float _min, flo
     }
     else
     {
-        valueRef = new ofParameter<float>();
+        valueRef = new float();
         *valueRef = value;
     }
     

@@ -53,7 +53,7 @@ void ofxUIDropDownList::init(string _name, vector<string> items, float w, float 
     label = new ofxUILabel(0,0,(name+" LABEL"), name, _size);
     addEmbeddedWidget(label);
     
-    value = new ofParameter<bool>();
+    value = new bool();
     *value = false;
     draw_fill = *value;
 
@@ -120,7 +120,7 @@ void ofxUIDropDownList::addToggle(string toggleName)
     }
     else
     {
-        ltoggle = new ofxUILabelToggle(toggleName, new ofParameter<bool>, rect->getWidth(), rect->getHeight(), 0, 0, size);
+        ltoggle = new ofxUILabelToggle(toggleName, false, rect->getWidth(), rect->getHeight(), 0, 0, size);
     }
     ltoggle->getRect()->setY(yt);
     ltoggle->getRect()->setX(0);

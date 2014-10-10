@@ -30,11 +30,11 @@
 class ofxUICircleSlider : public ofxUISlider
 {
 public:
-    ofxUICircleSlider(float x, float y, float w, float _min, float _max, ofParameter<float> _value, string _name, int _size = OFX_UI_FONT_SMALL);
-    ofxUICircleSlider(float w, float _min, float _max, ofParameter<float> _value, string _name, int _size = OFX_UI_FONT_SMALL);
-    ofxUICircleSlider(float x, float y, float w, float _min, float _max, ofParameter<float> *_value, string _name, int _size = OFX_UI_FONT_SMALL);
-    ofxUICircleSlider(float w, float _min, float _max, ofParameter<float> *_value, string _name, int _size = OFX_UI_FONT_SMALL);
-    void init(float x, float y, float w, float h, float _min, float _max, ofParameter<float> *_value, string _name, int _size);
+    ofxUICircleSlider(float x, float y, float w, float _min, float _max, float _value, string _name, int _size = OFX_UI_FONT_SMALL);
+    ofxUICircleSlider(float w, float _min, float _max, float _value, string _name, int _size = OFX_UI_FONT_SMALL);
+    ofxUICircleSlider(float x, float y, float w, float _min, float _max, float *_value, string _name, int _size = OFX_UI_FONT_SMALL);
+    ofxUICircleSlider(float w, float _min, float _max, float *_value, string _name, int _size = OFX_UI_FONT_SMALL);
+    void init(float x, float y, float w, float h, float _min, float _max, float *_value, string _name, int _size);
     void drawBack();
     void drawOutline();
     virtual void drawFill();

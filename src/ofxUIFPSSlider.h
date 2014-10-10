@@ -30,10 +30,10 @@ class ofxUIFPSSlider : public ofxUISlider
 {
 public:        
     ofxUIFPSSlider(string _name, float w, float h, float _max = 400.0, float x = 0, float y = 0);
-    ofxUIFPSSlider(float x, float y, float w, float h, float _min, float _max, ofParameter<float> _value, string _name);
-    ofxUIFPSSlider(float w, float h, float _min, float _max, ofParameter<float> _value, string _name);
-    ofxUIFPSSlider(float x, float y, float w, float h, float _min, float _max, ofParameter<float> *_value, string _name);
-    ofxUIFPSSlider(float w, float h, float _min, float _max, ofParameter<float> *_value, string _name);
+    ofxUIFPSSlider(float x, float y, float w, float h, float _min, float _max, float _value, string _name);
+    ofxUIFPSSlider(float w, float h, float _min, float _max, float _value, string _name);
+    ofxUIFPSSlider(float x, float y, float w, float h, float _min, float _max, float *_value, string _name);
+    ofxUIFPSSlider(float w, float h, float _min, float _max, float *_value, string _name);
 	void update();
     bool hasState() { return false; };
 }; 

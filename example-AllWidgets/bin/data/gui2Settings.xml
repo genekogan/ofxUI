@@ -8,20 +8,20 @@
 <Widget>
     <Kind>12</Kind>
     <Name>TEXT INPUT</Name>
-    <Value></Value>
+    <Value>&#x1B;&#x1B;2014-02-08-10-32-09-29&#x1B;&#x1B;&#x1B;&#x1B;</Value>
 </Widget>
 <Widget>
     <Kind>12</Kind>
     <Name>TEXT INPUT2</Name>
-    <Value></Value>
+    <Value>&#x1B;here there</Value>
 </Widget>
 <Widget>
     <Kind>8</Kind>
     <Name>DIALER</Name>
-    <Value>5000.000000000</Value>
+    <Value>-9520.000000000</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
     <Name>LABEL TGL</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>

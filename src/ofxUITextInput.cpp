@@ -26,19 +26,19 @@
 #include "ofxUITextInput.h"
 #include "ofxUI.h"
 
-ofxUITextInput::ofxUITextInput(string _name, ofParameter<string> *_textstring, float w, float h, float x, float y, int _size) : ofxUIWidgetWithLabel()
+ofxUITextInput::ofxUITextInput(string _name, string _textstring, float w, float h, float x, float y, int _size) : ofxUIWidgetWithLabel()
 {
     init(_name, _textstring, w, h, x, y, _size);
 }
 
-void ofxUITextInput::init(string _name, ofParameter<string> *_textstring, float w, float h, float x, float y, int _size)
+void ofxUITextInput::init(string _name, string _textstring, float w, float h, float x, float y, int _size)
 {
     initRect(x,y,w,h);
     name = string(_name);
     kind = OFX_UI_WIDGET_TEXTINPUT;
-    textstring = _textstring;
-    defaultstring = *_textstring;
-    displaystring = *_textstring;
+    textstring = string(_textstring);
+    defaultstring = string(_textstring);
+    displaystring = string(_textstring);
     
     clicked = false;                                            //the widget's value
     autoclear = true;
@@ -100,7 +100,7 @@ void ofxUITextInput::drawFill()
         ofxUIDrawRect(x, y, cursorWidth, t);
     }
     
-    if(textstring->get().size() == 0 && !clicked)
+    if(textstring.size() == 0 && !clicked)
     {
         ofxUIFill();
         ofxUISetColor(color_fill);
@@ -197,13 +197,10 @@ void ofxUITextInput::keyPressed(int key)
         switch (key)
         {
             case OF_KEY_BACKSPACE:
-                if (textstring->get().size() > 0 && cursorPosition > 0)
+                if (textstring.size() > 0 && cursorPosition > 0)
                 {
                     cursorPosition--;
-                    
-                    string current = textstring->get();
-                    current.erase(cursorPosition, 1);
-                    textstring->set(current);
+                    textstring.erase(cursorPosition, 1);
                     
                     // when we're deleting the first visible character, shift the string to the right
                     if(firstVisibleCharacterIndex == cursorPosition)
@@ -213,11 +210,9 @@ void ofxUITextInput::keyPressed(int key)
                 break;
                 
             case OF_KEY_DEL:
-                if (textstring->get().size() > 0 && cursorPosition < textstring->get().length())
+                if (textstring.size() > 0 && cursorPosition < textstring.length())
                 {
-                    string current = textstring->get();
-                    current.erase(cursorPosition, 1);
-                    textstring->set(current);
+                    textstring.erase(cursorPosition, 1);
                     recalculateDisplayString();
                 }
                 break;
@@ -234,14 +229,14 @@ void ofxUITextInput::keyPressed(int key)
                 if(autoclear)
                 {
                     cursorPosition = 0;
-                    textstring->set("");
+                    textstring.clear();
                     recalculateDisplayString();
                 }
                 break;
                 
             case OF_KEY_RIGHT:
             case OF_KEY_DOWN:
-                if(cursorPosition < textstring->get().length())
+                if(cursorPosition < textstring.length())
                 {
                     cursorPosition++;
                     recalculateDisplayString();
@@ -303,10 +298,7 @@ void ofxUITextInput::keyPressed(int key)
                     }
                 }
                 
-                string current = textstring->get();
-                current.insert(cursorPosition, 1, key);
-                textstring->set(current);
-                
+                textstring.insert(cursorPosition, 1, key);
                 cursorPosition++;
                 recalculateDisplayString();
             }
@@ -367,7 +359,7 @@ bool ofxUITextInput::isClicked()
 
 string ofxUITextInput::getTextString()
 {
-    return textstring->get();
+    return textstring;
 }
 
 int ofxUITextInput::getIntValue()
@@ -375,7 +367,7 @@ int ofxUITextInput::getIntValue()
     if (!onlyNumericInput)
         return  0;
         
-    return ofToInt(textstring->get());
+    return ofToInt(textstring);
 }
 
 float ofxUITextInput::getFloatValue()
@@ -383,7 +375,7 @@ float ofxUITextInput::getFloatValue()
     if (!onlyNumericInput)
         return  0;
     
-    return ofToFloat(textstring->get());
+    return ofToFloat(textstring);
 }
 
 void ofxUITextInput::setInputTriggerType(int _triggerType)
@@ -398,7 +390,7 @@ int ofxUITextInput::getInputTriggerType()
 
 void ofxUITextInput::setTextString(string s)
 {
-    textstring->set("");
+    textstring = "";
     string temp = "";
     
     int length = s.length();
@@ -413,17 +405,17 @@ void ofxUITextInput::setTextString(string s)
             if(newWidth < rect->getWidth()-padding*2.0)
             {
                 textstring+=s.at(i);
-                label->setLabel(textstring->get());
+                label->setLabel(textstring);
             }
         }
     }
     else
     {
-        textstring->set(s);
-        label->setLabel(textstring->get());
+        textstring = s;
+        label->setLabel(textstring);
     }
-    displaystring = textstring->get();
-    cursorPosition = textstring->get().length();
+    displaystring = textstring;
+    cursorPosition = textstring.length();
 }
 
 void ofxUITextInput::setParent(ofxUIWidget *_parent)
@@ -433,7 +425,7 @@ void ofxUITextInput::setParent(ofxUIWidget *_parent)
     {
         rect->setHeight(label->getPaddingRect()->getHeight()+padding*2.0);
     }
-    label->setLabel(textstring->get());
+    label->setLabel(textstring);
     ofxUIRectangle *labelrect = label->getRect();
     float h = labelrect->getHeight();
     float ph = rect->getHeight();
@@ -444,18 +436,16 @@ void ofxUITextInput::setParent(ofxUIWidget *_parent)
     defaultX = labelrect->getX(false);
     
     cursorWidth = label->getStringWidth(".");
-    while(label->getStringWidth(textstring->get()) > rect->getWidth()-padding*2.0)
+    while(label->getStringWidth(textstring) > rect->getWidth()-padding*2.0)
     {
         string::iterator it;
-        string current = textstring->get();
-        it=current.begin();
-        current.erase (it);
-        textstring->set(current);
+        it=textstring.begin();
+        textstring.erase (it);
     }
     
-    defaultstring = textstring->get();
-    displaystring = textstring->get();
-    setTextString(textstring->get());
+    defaultstring = textstring;
+    displaystring = textstring;
+    setTextString(textstring);
     calculatePaddingRect();
 }
 
@@ -477,7 +467,7 @@ void ofxUITextInput::setFocus(bool _focus)
     }
     else
     {
-        cursorPosition = textstring->get().length();
+        cursorPosition = textstring.length();
         stateChange();
         unClick();
     }
@@ -508,7 +498,7 @@ void ofxUITextInput::recalculateDisplayString()
     // the maximum width of the displaystring
     float maxWidth = rect->getWidth()-padding*2.0;
     
-    displaystring = textstring->get();
+    displaystring = textstring;
     string stringBeforeCursor = displaystring.substr(0, cursorPosition);
     string stringBeforeLabel =  displaystring.substr(0, firstVisibleCharacterIndex);
     

@@ -1,4 +1,4 @@
-/********************************************************************************** 
+/**********************************************************************************
  
  Copyright (C) 2012 Syed Reza Ali (www.syedrezaali.com)
  
@@ -24,28 +24,27 @@
 
 #pragma once
 
-#include "ofxUIToggle.h"
+#include "ofxUISlider.h"
 #include "ofxUIDefines.h"
 
-class ofxUIMultiImageToggle : public ofxUIToggle
+class ofxUIMinimalIntSlider : public ofxUIIntSlider
 {
-public:        
-    ofxUIMultiImageToggle(float x, float y, float w, float h, bool _value, string _pathURL, string _name,  int _size = OFX_UI_FONT_SMALL);
-    ofxUIMultiImageToggle(float w, float h, bool _value, string _pathURL, string _name, int _size = OFX_UI_FONT_SMALL);
-    ofxUIMultiImageToggle(float x, float y, float w, float h, bool *_value, string _pathURL, string _name,  int _size = OFX_UI_FONT_SMALL);
-    ofxUIMultiImageToggle(float w, float h, bool *_value, string _pathURL, string _name, int _size = OFX_UI_FONT_SMALL);
-    ~ofxUIMultiImageToggle();
-    void init(float x, float y, float w, float h, bool *_value, string _pathURL, string _name, int _size = OFX_UI_FONT_SMALL);
-    void drawBack();
-    void drawOutlineHighlight();
-    void drawFill();
-    void drawFillHighlight();
-    virtual void stateChange();
-    virtual void setValue(bool _value);
+public:
+    ofxUIMinimalIntSlider(string _name, int _min, int _max, int _value, float w, float h, float x = 0, float y = 0, int _size = OFX_UI_FONT_SMALL);
+    ofxUIMinimalIntSlider(string _name, int _min, int _max, int *_value, float w, float h, float x = 0, float y = 0, int _size = OFX_UI_FONT_SMALL);
+    void init(string _name, int _min, int _max, int *_value, float w, float h, float x, float y, int _size = OFX_UI_FONT_SMALL);
+    virtual void drawFill();
+    virtual void drawFillHighlight();
+    virtual void drawOutlineHighlight();
+    void input(float x, float y);
+    void updateLabel();
+	void setParent(ofxUIWidget *_parent);
+    virtual void setShowValue(bool _showValue);
+    bool getShowValue();
     
-protected:    //inherited: ofxUIRectangle *rect; ofxUIWidget *parent; 
-    ofImage *back; 
-    ofImage *over; 
-    ofImage *down;
-    ofImage *on; 
-}; 
+protected:
+    bool autoSize;
+    bool showValue;
+    
+    int offset = -50;
+};

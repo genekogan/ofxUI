@@ -22,22 +22,22 @@
  
  **********************************************************************************/
 
-#include "ofxUIMinimalSlider.h"
+#include "ofxUIMinimalIntSlider.h"
 #include "ofxUI.h"
 
-ofxUIMinimalSlider::ofxUIMinimalSlider(string _name, float _min, float _max, float _value, float w, float h, float x, float y, int _size) : ofxUISlider()
+ofxUIMinimalIntSlider::ofxUIMinimalIntSlider(string _name, int _min, int _max, int _value, float w, float h, float x, float y, int _size) : ofxUIIntSlider()
 {
     useReference = false;
     init(_name, _min, _max, &_value, w, h, x, y, _size);
 }
 
-ofxUIMinimalSlider::ofxUIMinimalSlider(string _name, float _min, float _max, float *_value, float w, float h, float x, float y, int _size) : ofxUISlider()
+ofxUIMinimalIntSlider::ofxUIMinimalIntSlider(string _name, int _min, int _max, int *_value, float w, float h, float x, float y, int _size) : ofxUIIntSlider()
 {
     useReference = true;
     init(_name, _min, _max, _value, w, h, x, y, _size);
 }
 
-void ofxUIMinimalSlider::init(string _name, float _min, float _max, float *_value, float w, float h, float x, float y, int _size)
+void ofxUIMinimalIntSlider::init(string _name, int _min, int _max, int *_value, float w, float h, float x, float y, int _size)
 {
     if(h < .1)
     {
@@ -55,14 +55,14 @@ void ofxUIMinimalSlider::init(string _name, float _min, float _max, float *_valu
     draw_fill = true;
     showValue = true;
     value = *_value;                                               //the widget's value
-
+    
     if(useReference)
     {
         valueRef = _value;
     }
     else
     {
-        valueRef = new float();
+        valueRef = new int();
         *valueRef = value;
     }
     
@@ -82,7 +82,7 @@ void ofxUIMinimalSlider::init(string _name, float _min, float _max, float *_valu
     value = ofxUIMap(value, min, max, 0.0, 1.0, true);
     
     label = new ofxUILabel(padding,h*.5,(name+" LABEL"), name, _size);
-    label->setDrawBack(true); 
+    label->setDrawBack(true);
     addEmbeddedWidget(label);
     
     increment = fabs(max - min) / 10.0;
@@ -91,7 +91,7 @@ void ofxUIMinimalSlider::init(string _name, float _min, float _max, float *_valu
     bSticky = false;
 }
 
-void ofxUIMinimalSlider::drawFill()
+void ofxUIMinimalIntSlider::drawFill()
 {
     if(draw_fill)
     {
@@ -101,7 +101,7 @@ void ofxUIMinimalSlider::drawFill()
     }
 }
 
-void ofxUIMinimalSlider::drawFillHighlight()
+void ofxUIMinimalIntSlider::drawFillHighlight()
 {
     if(draw_fill_highlight && showValue)
     {
@@ -116,7 +116,7 @@ void ofxUIMinimalSlider::drawFillHighlight()
     }
 }
 
-void ofxUIMinimalSlider::drawOutlineHighlight()
+void ofxUIMinimalIntSlider::drawOutlineHighlight()
 {
     if(draw_outline_highlight && showValue)
     {
@@ -131,7 +131,7 @@ void ofxUIMinimalSlider::drawOutlineHighlight()
     }
 }
 
-void ofxUIMinimalSlider::input(float x, float y)
+void ofxUIMinimalIntSlider::input(float x, float y)
 {
     value = MIN(1.0, MAX(0.0, rect->percentInside(x, y).x));
     updateValueRef();
@@ -139,12 +139,12 @@ void ofxUIMinimalSlider::input(float x, float y)
 }
 
 
-void ofxUIMinimalSlider::updateLabel()
+void ofxUIMinimalIntSlider::updateLabel()
 {
     
 }
 
-void ofxUIMinimalSlider::setParent(ofxUIWidget *_parent)
+void ofxUIMinimalIntSlider::setParent(ofxUIWidget *_parent)
 {
     parent = _parent;
     ofxUIRectangle *labelrect = label->getRect();
@@ -168,17 +168,17 @@ void ofxUIMinimalSlider::setParent(ofxUIWidget *_parent)
     
     labelrect->setY((int)(ph*.5 - h*.5));
     labelrect->setX(padding*2.0);
-    calculatePaddingRect(); 
+    calculatePaddingRect();
     updateValueRef();
     updateLabel();
 }
 
-void ofxUIMinimalSlider::setShowValue(bool _showValue)
+void ofxUIMinimalIntSlider::setShowValue(bool _showValue)
 {
     showValue = _showValue;
 }
 
-bool ofxUIMinimalSlider::getShowValue()
+bool ofxUIMinimalIntSlider::getShowValue()
 {
     return showValue;
 }

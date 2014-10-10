@@ -30,14 +30,14 @@
 class ofxUIRangeSlider : public ofxUIWidgetWithLabel
 {
 public:
-    ofxUIRangeSlider(string _name, float _min, float _max, ofParameter<float> _valuelow, ofParameter<float> _valuehigh, float w, float h, float x = 0, float y = 0, int _size = OFX_UI_FONT_SMALL);
-    ofxUIRangeSlider(string _name, float _min, float _max, ofParameter<float> *_valuelow, ofParameter<float> *_valuehigh, float w, float h, float x = 0, float y = 0, int _size = OFX_UI_FONT_SMALL);
-    ofxUIRangeSlider(float x, float y, float w, float h, float _min, float _max, ofParameter<float> _valuelow, ofParameter<float> _valuehigh, string _name, int _size = OFX_UI_FONT_SMALL);
-    ofxUIRangeSlider(float w, float h, float _min, float _max, ofParameter<float> _valuelow, ofParameter<float> _valuehigh, string _name, int _size = OFX_UI_FONT_SMALL);
-    ofxUIRangeSlider(float x, float y, float w, float h, float _min, float _max, ofParameter<float> *_valuelow, ofParameter<float> *_valuehigh, string _name, int _size = OFX_UI_FONT_SMALL);
-    ofxUIRangeSlider(float w, float h, float _min, float _max, ofParameter<float> *_valuelow, ofParameter<float> *_valuehigh, string _name, int _size = OFX_UI_FONT_SMALL);
+    ofxUIRangeSlider(string _name, float _min, float _max, float _valuelow, float _valuehigh, float w, float h, float x = 0, float y = 0, int _size = OFX_UI_FONT_SMALL);
+    ofxUIRangeSlider(string _name, float _min, float _max, float *_valuelow, float *_valuehigh, float w, float h, float x = 0, float y = 0, int _size = OFX_UI_FONT_SMALL);
+    ofxUIRangeSlider(float x, float y, float w, float h, float _min, float _max, float _valuelow, float _valuehigh, string _name, int _size = OFX_UI_FONT_SMALL);
+    ofxUIRangeSlider(float w, float h, float _min, float _max, float _valuelow, float _valuehigh, string _name, int _size = OFX_UI_FONT_SMALL);
+    ofxUIRangeSlider(float x, float y, float w, float h, float _min, float _max, float *_valuelow, float *_valuehigh, string _name, int _size = OFX_UI_FONT_SMALL);
+    ofxUIRangeSlider(float w, float h, float _min, float _max, float *_valuelow, float *_valuehigh, string _name, int _size = OFX_UI_FONT_SMALL);
     ~ofxUIRangeSlider();
-    void init(string _name, float _min, float _max, ofParameter<float> *_valuelow, ofParameter<float> *_valuehigh, float w, float h, float x = 0, float y = 0, int _size = OFX_UI_FONT_SMALL);
+    void init(string _name, float _min, float _max, float *_valuelow, float *_valuehigh, float w, float h, float x = 0, float y = 0, int _size = OFX_UI_FONT_SMALL);
     virtual void update();
     virtual void setDrawPadding(bool _draw_padded_rect);
     virtual void setDrawPaddingOutline(bool _draw_padded_rect_outline);
@@ -79,8 +79,8 @@ public:
     
 protected:    
 	float valuelow, valuehigh, increment; 
-    ofParameter<float> *valuelowRef;
-    ofParameter<float> *valuehighRef;
+    float *valuelowRef; 
+    float *valuehighRef;    
     bool useReference;         
     float hitValueLow, hitValueHigh; 
 	bool hitHigh, hitLow, hitCenter; 

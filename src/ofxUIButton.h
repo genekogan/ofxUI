@@ -31,10 +31,10 @@ class ofxUIButton : public ofxUIWidgetWithLabel
 {
 public:
     ofxUIButton();    
-    ofxUIButton(string _name, ofParameter<bool> _value, float w, float h, float x = 0, float y = 0, int _size = OFX_UI_FONT_SMALL);
-    ofxUIButton(string _name, ofParameter<bool> *_value, float w, float h, float x = 0, float y = 0, int _size = OFX_UI_FONT_SMALL);
+    ofxUIButton(string _name, bool _value, float w, float h, float x = 0, float y = 0, int _size = OFX_UI_FONT_SMALL);
+    ofxUIButton(string _name, bool *_value, float w, float h, float x = 0, float y = 0, int _size = OFX_UI_FONT_SMALL);
     ~ofxUIButton();
-    virtual void init(string _name, ofParameter<bool> *_value, float w, float h, float x = 0, float y = 0, int _size = OFX_UI_FONT_SMALL);
+    virtual void init(string _name, bool *_value, float w, float h, float x = 0, float y = 0, int _size = OFX_UI_FONT_SMALL);
     virtual void drawFill();
     virtual void mouseMoved(int x, int y);
     virtual void mouseDragged(int x, int y, int button);
@@ -44,7 +44,7 @@ public:
 	virtual void setParent(ofxUIWidget *_parent);
 	bool getValue();
     virtual void setValue(bool _value);
-    virtual void setValuePtr(ofParameter<bool> *_value);
+    virtual void setValuePtr(bool *_value);
 	void toggleValue();
     virtual bool isHit(float x, float y);
     void setLabelPosition(ofxUIWidgetPosition pos);
@@ -54,7 +54,7 @@ public:
     virtual void keyReleased(int key);
     
 protected:
-    ofParameter<bool> *value;
+    bool *value; 
     bool useReference; 
     ofxUIWidgetPosition labelPosition;
 }; 

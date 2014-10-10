@@ -25,25 +25,25 @@
 #include "ofxUIMultiImageButton.h"
 #include "ofxUI.h"
 
-ofxUIMultiImageButton::ofxUIMultiImageButton(float x, float y, float w, float h, ofParameter<bool> _value, string _pathURL, string _name, int _size) : ofxUIButton()
+ofxUIMultiImageButton::ofxUIMultiImageButton(float x, float y, float w, float h, bool _value, string _pathURL, string _name, int _size) : ofxUIButton()
 {
     useReference = false;
     init(x, y, w, h, &_value, _pathURL, _name, _size);
 }
 
-ofxUIMultiImageButton::ofxUIMultiImageButton(float w, float h, ofParameter<bool> _value, string _pathURL, string _name, int _size) : ofxUIButton()
+ofxUIMultiImageButton::ofxUIMultiImageButton(float w, float h, bool _value, string _pathURL, string _name, int _size) : ofxUIButton()
 {
     useReference = false;
     init(0, 0, w, h, &_value, _pathURL, _name, _size);
 }
 
-ofxUIMultiImageButton::ofxUIMultiImageButton(float x, float y, float w, float h, ofParameter<bool> *_value, string _pathURL, string _name, int _size) : ofxUIButton()
+ofxUIMultiImageButton::ofxUIMultiImageButton(float x, float y, float w, float h, bool *_value, string _pathURL, string _name, int _size) : ofxUIButton()
 {
     useReference = true;
     init(x, y, w, h, _value, _pathURL, _name, _size);
 }
 
-ofxUIMultiImageButton::ofxUIMultiImageButton(float w, float h, ofParameter<bool> *_value, string _pathURL, string _name, int _size) : ofxUIButton()
+ofxUIMultiImageButton::ofxUIMultiImageButton(float w, float h, bool *_value, string _pathURL, string _name, int _size) : ofxUIButton()
 {
     useReference = true;
     init(0, 0, w, h, _value, _pathURL, _name, _size);
@@ -56,7 +56,7 @@ ofxUIMultiImageButton::~ofxUIMultiImageButton()
     delete on;
 }
 
-void ofxUIMultiImageButton::init(float x, float y, float w, float h, ofParameter<bool> *_value, string _pathURL, string _name, int _size)
+void ofxUIMultiImageButton::init(float x, float y, float w, float h, bool *_value, string _pathURL, string _name, int _size)
 {
     initRect(x,y,w,h);
     name = string(_name);
@@ -71,7 +71,7 @@ void ofxUIMultiImageButton::init(float x, float y, float w, float h, ofParameter
     }
     else
     {
-        value = new ofParameter<bool>();
+        value = new bool();
         *value = *_value;
     }
     

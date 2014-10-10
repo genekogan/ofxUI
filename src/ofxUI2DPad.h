@@ -29,10 +29,10 @@
 class ofxUI2DPad : public ofxUIWidgetWithLabel
 {
 public:
-    ofxUI2DPad(string _name, ofxUIVec2f _rangeX, ofxUIVec2f _rangeY, ofParameter<ofxUIVec2f> _value, float w, float h, float x = 0, float y = 0);
-    ofxUI2DPad(string _name, ofxUIVec2f _rangeX, ofxUIVec2f _rangeY, ofParameter<ofxUIVec2f> *_value, float w, float h, float x = 0, float y = 0);
+    ofxUI2DPad(string _name, ofxUIVec3f _rangeX, ofxUIVec3f _rangeY, ofxUIVec3f _value, float w, float h, float x = 0, float y = 0);
+    ofxUI2DPad(string _name, ofxUIVec3f _rangeX, ofxUIVec3f _rangeY, ofxUIVec3f *_value, float w, float h, float x = 0, float y = 0);
     ~ofxUI2DPad();
-    void init(string _name, ofxUIVec2f _rangeX, ofxUIVec2f _rangeY, ofParameter<ofxUIVec2f> *_value, float w, float h, float x = 0, float y = 0);
+    void init(string _name, ofxUIVec3f _rangeX, ofxUIVec3f _rangeY, ofxUIVec3f *_value, float w, float h, float x = 0, float y = 0);
     virtual void update();
     virtual void setDrawPadding(bool _draw_padded_rect);
     virtual void setDrawPaddingOutline(bool _draw_padded_rect_outline);
@@ -49,10 +49,10 @@ public:
     void updateValueRef();
 	void updateLabel();
     void stateChange();
-	void setValue(ofxUIVec2f _value);
-	ofxUIVec2f getValue();
-	ofxUIVec2f getPercentValue();
-	ofxUIVec2f getScaledValue();
+	void setValue(ofxUIVec3f _value);
+	ofxUIVec3f getValue();
+	ofxUIVec3f getPercentValue();
+	ofxUIVec3f getScaledValue();
     bool isDraggable();
     void setLabelPrecision(int _precision);
     bool hasState(){ return true; };
@@ -62,10 +62,10 @@ public:
 #endif
 
 protected:
-	ofxUIVec2f value;
-	ofParameter<ofxUIVec2f> *valueRef;     
+	ofxUIVec3f value;
+	ofxUIVec3f *valueRef;     
     float increment;
     int labelPrecision;     
     bool useReference; 
-    ofxUIVec2f rangeX, rangeY;
+    ofxUIVec3f rangeX, rangeY;
 }; 

@@ -30,13 +30,13 @@ ofxUIButton::ofxUIButton() : ofxUIWidgetWithLabel()
     
 }
 
-ofxUIButton::ofxUIButton(string _name, ofParameter<bool> _value, float w, float h, float x, float y, int _size) : ofxUIWidgetWithLabel()
+ofxUIButton::ofxUIButton(string _name, bool _value, float w, float h, float x, float y, int _size) : ofxUIWidgetWithLabel()
 {
     useReference = false;
     init(_name, &_value, w, h, x, y, _size);
 }
 
-ofxUIButton::ofxUIButton(string _name, ofParameter<bool> *_value, float w, float h, float x, float y, int _size) : ofxUIWidgetWithLabel()
+ofxUIButton::ofxUIButton(string _name, bool *_value, float w, float h, float x, float y, int _size) : ofxUIWidgetWithLabel()
 {
     useReference = true;
     init(_name, _value, w, h, x, y, _size);
@@ -50,7 +50,7 @@ ofxUIButton::~ofxUIButton()
     }
 }
 
-void ofxUIButton::init(string _name, ofParameter<bool> *_value, float w, float h, float x, float y, int _size)
+void ofxUIButton::init(string _name, bool *_value, float w, float h, float x, float y, int _size)
 {
     initRect(x,y,w,h);
     name = string(_name);
@@ -59,16 +59,17 @@ void ofxUIButton::init(string _name, ofParameter<bool> *_value, float w, float h
     addEmbeddedWidget(label);
     
     labelPosition = OFX_UI_WIDGET_POSITION_RIGHT;
-
+    
     if(useReference)
     {
         value = _value;
     }
     else
     {
-        value = new ofParameter<bool>();
+        value = new bool();
         *value = *_value;
     }
+    
     setValue(*_value);
 }
 
@@ -219,7 +220,7 @@ void ofxUIButton::setValue(bool _value)
     draw_fill = *value;
 }
 
-void ofxUIButton::setValuePtr(ofParameter<bool> *_value)
+void ofxUIButton::setValuePtr(bool *_value)
 {
     if(!useReference)
     {

@@ -30,13 +30,13 @@ ofxUIToggle::ofxUIToggle() : ofxUIButton()
     
 }
 
-ofxUIToggle::ofxUIToggle(string _name, ofParameter<bool> _value, float w, float h, float x, float y, int _size)
+ofxUIToggle::ofxUIToggle(string _name, bool _value, float w, float h, float x, float y, int _size)
 : ofxUIButton( _name, _value, w, h, x, y, _size )
 {
     kind = OFX_UI_WIDGET_TOGGLE;
 }
 
-ofxUIToggle::ofxUIToggle(string _name, ofParameter<bool> *_value, float w, float h, float x, float y, int _size)
+ofxUIToggle::ofxUIToggle(string _name, bool *_value, float w, float h, float x, float y, int _size)
 : ofxUIButton( _name, _value, w, h, x, y, _size )
 {
     kind = OFX_UI_WIDGET_TOGGLE;

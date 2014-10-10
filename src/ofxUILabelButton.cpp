@@ -25,19 +25,19 @@
 #include "ofxUILabelButton.h"
 #include "ofxUI.h"
 
-ofxUILabelButton::ofxUILabelButton(string _name, ofParameter<bool> _value, float w, float h, float x, float y, int _size, bool _justifyLeft) : ofxUIButton()
+ofxUILabelButton::ofxUILabelButton(string _name, bool _value, float w, float h, float x, float y, int _size, bool _justifyLeft) : ofxUIButton()
 {
     useReference = false;
     init(_name, &_value, w, h, x, y, _size, _justifyLeft);
 }
 
-ofxUILabelButton::ofxUILabelButton(string _name, ofParameter<bool> *_value, float w, float h, float x, float y, int _size, bool _justifyLeft) : ofxUIButton()
+ofxUILabelButton::ofxUILabelButton(string _name, bool *_value, float w, float h, float x, float y, int _size, bool _justifyLeft) : ofxUIButton()
 {
     useReference = true;
     init(_name, _value, w, h, x, y, _size, _justifyLeft);
 }
 
-void ofxUILabelButton::init(string _name, ofParameter<bool> *_value, float w, float h, float x, float y, int _size, bool _justifyLeft)
+void ofxUILabelButton::init(string _name, bool *_value, float w, float h, float x, float y, int _size, bool _justifyLeft)
 {
     initRect(x, y, w, h);
     justifyLeft = _justifyLeft;
@@ -55,7 +55,7 @@ void ofxUILabelButton::init(string _name, ofParameter<bool> *_value, float w, fl
     }
     else
     {
-        value = new ofParameter<bool>();
+        value = new bool();
         *value = *_value;
     }
     

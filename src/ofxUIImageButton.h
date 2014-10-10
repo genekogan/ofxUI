@@ -30,11 +30,11 @@ class ofxUIImageButton : public ofxUIButton
 {
 public:
     ofxUIImageButton();
-    ofxUIImageButton(float x, float y, float w, float h, ofParameter<bool> _value, string _pathURL, string _name, int _size = OFX_UI_FONT_SMALL);
-    ofxUIImageButton(float w, float h, ofParameter<bool> _value, string _pathURL, string _name, int _size = OFX_UI_FONT_SMALL);
-    ofxUIImageButton(float x, float y, float w, float h, ofParameter<bool> *_value, string _pathURL, string _name, int _size = OFX_UI_FONT_SMALL);
-    ofxUIImageButton(float w, float h, ofParameter<bool> *_value, string _pathURL, string _name, int _size = OFX_UI_FONT_SMALL);
-    void init(float x, float y, float w, float h, ofParameter<bool> *_value, string _pathURL, string _name, int _size = OFX_UI_FONT_SMALL);
+    ofxUIImageButton(float x, float y, float w, float h, bool _value, string _pathURL, string _name, int _size = OFX_UI_FONT_SMALL);
+    ofxUIImageButton(float w, float h, bool _value, string _pathURL, string _name, int _size = OFX_UI_FONT_SMALL);
+    ofxUIImageButton(float x, float y, float w, float h, bool *_value, string _pathURL, string _name, int _size = OFX_UI_FONT_SMALL);
+    ofxUIImageButton(float w, float h, bool *_value, string _pathURL, string _name, int _size = OFX_UI_FONT_SMALL);
+    void init(float x, float y, float w, float h, bool *_value, string _pathURL, string _name, int _size = OFX_UI_FONT_SMALL);
     virtual ~ofxUIImageButton();
     virtual void drawBack();
     virtual void drawFill();

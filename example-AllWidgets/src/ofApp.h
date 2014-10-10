@@ -38,11 +38,9 @@ public:
 
 	bool hideGUI;
 	
-	ofParameter<float> red, green, blue;
-	ofParameter<bool> bdrawGrid;
-	ofParameter<bool> bdrawPadding;
-    ofParameter<string> text1, text2;
-    ofParameter<ofVec2f> pad;
+	float red, green, blue;
+	bool bdrawGrid;
+	bool bdrawPadding;
 	
 	void guiEvent(ofxUIEventArgs &e);
     

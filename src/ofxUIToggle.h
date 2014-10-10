@@ -30,8 +30,8 @@ class ofxUIToggle : public ofxUIButton
 {
 public:
     ofxUIToggle();
-    ofxUIToggle(string _name, ofParameter<bool> _value, float w, float h, float x = 0, float y = 0, int _size = OFX_UI_FONT_SMALL);
-    ofxUIToggle(string _name, ofParameter<bool> *_value, float w, float h, float x = 0, float y = 0, int _size = OFX_UI_FONT_SMALL);
+    ofxUIToggle(string _name, bool _value, float w, float h, float x = 0, float y = 0, int _size = OFX_UI_FONT_SMALL);
+    ofxUIToggle(string _name, bool *_value, float w, float h, float x = 0, float y = 0, int _size = OFX_UI_FONT_SMALL);
 	virtual void setParent(ofxUIWidget *_parent);
     virtual void setDrawPadding(bool _draw_padded_rect);
     virtual void setDrawPaddingOutline(bool _draw_padded_rect_outline);

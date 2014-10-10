@@ -25,42 +25,42 @@
 #include "ofxUIRangeSlider.h"
 #include "ofxUI.h"
 
-ofxUIRangeSlider::ofxUIRangeSlider(string _name, float _min, float _max, ofParameter<float> _valuelow, ofParameter<float> _valuehigh, float w, float h,
+ofxUIRangeSlider::ofxUIRangeSlider(string _name, float _min, float _max, float _valuelow, float _valuehigh, float w, float h,
                  float x, float y, int _size) : ofxUIWidgetWithLabel()
 {
     useReference = false;
     init(_name, _min, _max, &_valuelow, &_valuehigh, w, h, x, y, _size);
 }
 
-ofxUIRangeSlider::ofxUIRangeSlider(string _name, float _min, float _max, ofParameter<float> *_valuelow, ofParameter<float> *_valuehigh, float w, float h,
+ofxUIRangeSlider::ofxUIRangeSlider(string _name, float _min, float _max, float *_valuelow, float *_valuehigh, float w, float h,
                  float x, float y, int _size) : ofxUIWidgetWithLabel()
 {
     useReference = true;
     init(_name, _min, _max, _valuelow, _valuehigh, w, h, x, y, _size);
 }
 
-ofxUIRangeSlider::ofxUIRangeSlider(float x, float y, float w, float h, float _min, float _max, ofParameter<float> _valuelow, ofParameter<float> _valuehigh, string _name, int _size) : ofxUIWidgetWithLabel()
+ofxUIRangeSlider::ofxUIRangeSlider(float x, float y, float w, float h, float _min, float _max, float _valuelow, float _valuehigh, string _name, int _size) : ofxUIWidgetWithLabel()
 {
     useReference = false;
     init(_name, _min, _max, &_valuelow, &_valuehigh, w, h, x, y, _size);
     //        ofLogWarning("OFXUIRANGESLIDER: DON'T USE THIS CONSTRUCTOR. THIS WILL BE REMOVED ON FUTURE RELEASES.");
 }
 
-ofxUIRangeSlider::ofxUIRangeSlider(float w, float h, float _min, float _max, ofParameter<float> _valuelow, ofParameter<float> _valuehigh, string _name, int _size) : ofxUIWidgetWithLabel()
+ofxUIRangeSlider::ofxUIRangeSlider(float w, float h, float _min, float _max, float _valuelow, float _valuehigh, string _name, int _size) : ofxUIWidgetWithLabel()
 {
     useReference = false;
     init(_name, _min, _max, &_valuelow, &_valuehigh, w, h, 0, 0, _size);
     //        ofLogWarning("OFXUIRANGESLIDER: DON'T USE THIS CONSTRUCTOR. THIS WILL BE REMOVED ON FUTURE RELEASES.");
 }
 
-ofxUIRangeSlider::ofxUIRangeSlider(float x, float y, float w, float h, float _min, float _max, ofParameter<float> *_valuelow, ofParameter<float> *_valuehigh, string _name, int _size) : ofxUIWidgetWithLabel()
+ofxUIRangeSlider::ofxUIRangeSlider(float x, float y, float w, float h, float _min, float _max, float *_valuelow, float *_valuehigh, string _name, int _size) : ofxUIWidgetWithLabel()
 {
     useReference = true;
     init(_name, _min, _max, _valuelow, _valuehigh, w, h, x, y, _size);
     //        ofLogWarning("OFXUIRANGESLIDER: DON'T USE THIS CONSTRUCTOR. THIS WILL BE REMOVED ON FUTURE RELEASES.");
 }
 
-ofxUIRangeSlider::ofxUIRangeSlider(float w, float h, float _min, float _max, ofParameter<float> *_valuelow, ofParameter<float> *_valuehigh, string _name, int _size) : ofxUIWidgetWithLabel()
+ofxUIRangeSlider::ofxUIRangeSlider(float w, float h, float _min, float _max, float *_valuelow, float *_valuehigh, string _name, int _size) : ofxUIWidgetWithLabel()
 {
     useReference = true;
     init(_name, _min, _max, _valuelow, _valuehigh, w, h, 0, 0, _size);
@@ -76,7 +76,7 @@ ofxUIRangeSlider::~ofxUIRangeSlider()
     }
 }
 
-void ofxUIRangeSlider::init(string _name, float _min, float _max, ofParameter<float> *_valuelow, ofParameter<float> *_valuehigh, float w, float h,
+void ofxUIRangeSlider::init(string _name, float _min, float _max, float *_valuelow, float *_valuehigh, float w, float h,
           float x, float y, int _size)
 {
     initRect(x,y,w,h);
@@ -102,8 +102,8 @@ void ofxUIRangeSlider::init(string _name, float _min, float _max, ofParameter<fl
     }
     else
     {
-        valuelowRef = new ofParameter<float>();
-        valuehighRef = new ofParameter<float>();
+        valuelowRef = new float();
+        valuehighRef = new float();
         *valuelowRef = valuelow;
         *valuehighRef = valuehigh;
     }

@@ -8,21 +8,21 @@
 <Widget>
     <Kind>26</Kind>
     <Name>BILABEL</Name>
-    <Value>50.000000000</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>25</Kind>
     <Name>MINIMAL</Name>
-    <Value>71.428573608</Value>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>28</Kind>
     <Name>SAMPLER</Name>
-    <XValue>0.384236455</XValue>
-    <YValue>0.516231656</YValue>
+    <XValue>0.748768449</XValue>
+    <YValue>0.111617655</YValue>
     <RColor>255</RColor>
-    <GColor>255</GColor>
-    <BColor>255</BColor>
+    <GColor>239</GColor>
+    <BColor>94</BColor>
     <AColor>255</AColor>
 </Widget>
 <Widget>

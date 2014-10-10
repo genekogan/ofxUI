@@ -25,25 +25,25 @@
 #include "ofxUIMultiImageToggle.h"
 #include "ofxUI.h"
 
-ofxUIMultiImageToggle::ofxUIMultiImageToggle(float x, float y, float w, float h, ofParameter<bool> _value, string _pathURL, string _name, int _size) : ofxUIToggle()
+ofxUIMultiImageToggle::ofxUIMultiImageToggle(float x, float y, float w, float h, bool _value, string _pathURL, string _name, int _size) : ofxUIToggle()
 {
     useReference = false;
     init(x, y, w, h, &_value, _pathURL, _name, _size);
 }
 
-ofxUIMultiImageToggle::ofxUIMultiImageToggle(float w, float h, ofParameter<bool> _value, string _pathURL, string _name, int _size) : ofxUIToggle()
+ofxUIMultiImageToggle::ofxUIMultiImageToggle(float w, float h, bool _value, string _pathURL, string _name, int _size) : ofxUIToggle()
 {
     useReference = false;
     init(0, 0, w, h, &_value, _pathURL, _name, _size);
 }
 
-ofxUIMultiImageToggle::ofxUIMultiImageToggle(float x, float y, float w, float h, ofParameter<bool> *_value, string _pathURL, string _name,  int _size) : ofxUIToggle()
+ofxUIMultiImageToggle::ofxUIMultiImageToggle(float x, float y, float w, float h, bool *_value, string _pathURL, string _name,  int _size) : ofxUIToggle()
 {
     useReference = true;
     init(x, y, w, h, _value, _pathURL, _name, _size);
 }
 
-ofxUIMultiImageToggle::ofxUIMultiImageToggle(float w, float h, ofParameter<bool> *_value, string _pathURL, string _name, int _size) : ofxUIToggle()
+ofxUIMultiImageToggle::ofxUIMultiImageToggle(float w, float h, bool *_value, string _pathURL, string _name, int _size) : ofxUIToggle()
 {
     useReference = true;
     init(0, 0, w, h, _value, _pathURL, _name, _size);
@@ -58,7 +58,7 @@ ofxUIMultiImageToggle::~ofxUIMultiImageToggle()
     delete on;
 }
 
-void ofxUIMultiImageToggle::init(float x, float y, float w, float h, ofParameter<bool> *_value, string _pathURL, string _name, int _size)
+void ofxUIMultiImageToggle::init(float x, float y, float w, float h, bool *_value, string _pathURL, string _name, int _size)
 {
     initRect(x, y, w, h);
     name = string(_name);
@@ -73,7 +73,7 @@ void ofxUIMultiImageToggle::init(float x, float y, float w, float h, ofParameter
     }
     else
     {
-        value = new ofParameter<bool>();
+        value = new bool();
         *value = *_value;
     }
     

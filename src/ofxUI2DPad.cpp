@@ -25,13 +25,13 @@
 #include "ofxUI2DPad.h"
 #include "ofxUI.h"
 
-ofxUI2DPad::ofxUI2DPad(string _name, ofxUIVec2f _rangeX, ofxUIVec2f _rangeY, ofParameter<ofxUIVec2f> _value, float w, float h, float x, float y) : ofxUIWidgetWithLabel()
+ofxUI2DPad::ofxUI2DPad(string _name, ofxUIVec3f _rangeX, ofxUIVec3f _rangeY, ofxUIVec3f _value, float w, float h, float x, float y) : ofxUIWidgetWithLabel()
 {
     useReference = false;
     init(_name, _rangeX, _rangeY, &_value, w, h, x, y);
 }
 
-ofxUI2DPad::ofxUI2DPad(string _name, ofxUIVec2f _rangeX, ofxUIVec2f _rangeY, ofParameter<ofxUIVec2f> *_value, float w, float h, float x, float y) : ofxUIWidgetWithLabel()
+ofxUI2DPad::ofxUI2DPad(string _name, ofxUIVec3f _rangeX, ofxUIVec3f _rangeY, ofxUIVec3f *_value, float w, float h, float x, float y) : ofxUIWidgetWithLabel()
 {
     useReference = true;
     init(_name, _rangeX, _rangeY, _value, w, h, x, y);
@@ -45,7 +45,7 @@ ofxUI2DPad::~ofxUI2DPad()
     }
 }
 
-void ofxUI2DPad::init(string _name, ofxUIVec2f _rangeX, ofxUIVec2f _rangeY, ofParameter<ofxUIVec2f> *_value, float w, float h, float x, float y)
+void ofxUI2DPad::init(string _name, ofxUIVec3f _rangeX, ofxUIVec3f _rangeY, ofxUIVec3f *_value, float w, float h, float x, float y)
 {
     initRect(x, y, w, h);
     name = string(_name);
@@ -59,7 +59,7 @@ void ofxUI2DPad::init(string _name, ofxUIVec2f _rangeX, ofxUIVec2f _rangeY, ofPa
     }
     else
     {
-        valueRef = new ofParameter<ofxUIVec2f>();
+        valueRef = new ofxUIVec3f();
         *valueRef = value;
     }
     
@@ -100,8 +100,8 @@ void ofxUI2DPad::update()
 {
     if(useReference)
     {
-        value.x = ofxUIMap(valueRef->get().x, rangeX.x, rangeX.y, 0.0, 1.0, true);
-        value.y = ofxUIMap(valueRef->get().y, rangeY.x, rangeY.y, 0.0, 1.0, true);
+        value.x = ofxUIMap(valueRef->x, rangeX.x, rangeX.y, 0.0, 1.0, true);
+        value.y = ofxUIMap(valueRef->y, rangeY.x, rangeY.y, 0.0, 1.0, true);
     }
 }
 
@@ -240,7 +240,7 @@ void ofxUI2DPad::keyPressed(int key)
         {
             case OF_KEY_RIGHT:
             {
-                ofxUIVec2f p = getScaledValue();
+                ofxUIVec3f p = getScaledValue();
                 p.x+=increment;
                 value.x = ofxUIMap(p.x, rangeX.x, rangeX.y, 0.0, 1.0, true);
                 updateValueRef();
@@ -251,7 +251,7 @@ void ofxUI2DPad::keyPressed(int key)
                 
             case OF_KEY_UP:
             {
-                ofxUIVec2f p = getScaledValue();
+                ofxUIVec3f p = getScaledValue();
                 p.y +=increment;
                 value.y = ofxUIMap(p.y, rangeY.x, rangeY.y, 0.0, 1.0, true);
                 updateValueRef();
@@ -262,7 +262,7 @@ void ofxUI2DPad::keyPressed(int key)
                 
             case OF_KEY_LEFT:
             {
-                ofxUIVec2f p = getScaledValue();
+                ofxUIVec3f p = getScaledValue();
                 p.x-=increment;
                 value.x = ofxUIMap(p.x, rangeX.x, rangeX.y, 0.0, 1.0, true);
                 updateValueRef();
@@ -273,7 +273,7 @@ void ofxUI2DPad::keyPressed(int key)
                 
             case OF_KEY_DOWN:
             {
-                ofxUIVec2f p = getScaledValue();
+                ofxUIVec3f p = getScaledValue();
                 p.y -=increment;
                 value.y = ofxUIMap(p.y, rangeY.x, rangeY.y, 0.0, 1.0, true);
                 updateValueRef();
@@ -344,7 +344,7 @@ void ofxUI2DPad::stateChange()
     }
 }
 
-void ofxUI2DPad::setValue(ofxUIVec2f _value)
+void ofxUI2DPad::setValue(ofxUIVec3f _value)
 {
     if(_value.x > rangeX.y)
     {
@@ -370,19 +370,19 @@ void ofxUI2DPad::setValue(ofxUIVec2f _value)
     updateLabel();
 }
 
-ofxUIVec2f ofxUI2DPad::getValue()
+ofxUIVec3f ofxUI2DPad::getValue()
 {
     return value;
 }
 
-ofxUIVec2f ofxUI2DPad::getPercentValue()
+ofxUIVec3f ofxUI2DPad::getPercentValue()
 {
     return value;
 }
 
-ofxUIVec2f ofxUI2DPad::getScaledValue()
+ofxUIVec3f ofxUI2DPad::getScaledValue()
 {
-    ofxUIVec2f p = value;
+    ofxUIVec3f p = value;
     p.x = ofxUIMap(p.x, 0, 1, rangeX.x, rangeX.y, true);
     p.y = ofxUIMap(p.y, 0, 1, rangeY.x, rangeY.y, true);
     return p;
@@ -410,7 +410,7 @@ void ofxUI2DPad::saveState(ofxXmlSettings *XML)
 
 void ofxUI2DPad::loadState(ofxXmlSettings *XML)
 {
-    setValue(ofxUIVec2f(XML->getValue("XValue", getScaledValue().x, 0), XML->getValue("YValue", getScaledValue().y, 0)));
+    setValue(ofxUIVec3f(XML->getValue("XValue", getScaledValue().x, 0), XML->getValue("YValue", getScaledValue().y, 0)));
 }
 
 #endif

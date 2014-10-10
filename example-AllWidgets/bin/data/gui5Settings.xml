@@ -8,16 +8,16 @@
 <Widget>
     <Kind>11</Kind>
     <Name>PAD</Name>
-    <XValue>-15.270936966</XValue>
-    <YValue>21.182262421</YValue>
+    <XValue>-67.487686157</XValue>
+    <YValue>-25.123155594</YValue>
 </Widget>
 <Widget>
     <Kind>21</Kind>
     <Name>R2SLIDER</Name>
-    <Value>20.319635391</Value>
+    <Value>22.036170959</Value>
 </Widget>
 <Widget>
     <Kind>27</Kind>
     <Name>NORTH SOUTH</Name>
-    <Value>37.000000000</Value>
+    <Value>57.000000000</Value>
 </Widget>

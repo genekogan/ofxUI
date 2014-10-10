@@ -13,57 +13,57 @@
 <Widget>
     <Kind>4</Kind>
     <Name>GREEN</Name>
-    <Value>255.000000000</Value>
+    <Value>239.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BLUE</Name>
-    <Value>255.000000000</Value>
+    <Value>94.000000000</Value>
 </Widget>
 <Widget>
     <Kind>5</Kind>
     <Name>0</Name>
-    <Value>31.875000000</Value>
+    <Value>150.000000000</Value>
 </Widget>
 <Widget>
     <Kind>5</Kind>
     <Name>1</Name>
-    <Value>49.406257629</Value>
+    <Value>101.999992371</Value>
 </Widget>
 <Widget>
     <Kind>5</Kind>
     <Name>2</Name>
-    <Value>84.468750000</Value>
+    <Value>150.000000000</Value>
 </Widget>
 <Widget>
     <Kind>5</Kind>
     <Name>3</Name>
-    <Value>65.343757629</Value>
+    <Value>167.343750000</Value>
 </Widget>
 <Widget>
     <Kind>5</Kind>
     <Name>4</Name>
-    <Value>90.843750000</Value>
+    <Value>150.000000000</Value>
 </Widget>
 <Widget>
     <Kind>5</Kind>
     <Name>5</Name>
-    <Value>98.812500000</Value>
+    <Value>224.718750000</Value>
 </Widget>
 <Widget>
     <Kind>5</Kind>
     <Name>6</Name>
-    <Value>124.312500000</Value>
+    <Value>150.000000000</Value>
 </Widget>
 <Widget>
     <Kind>5</Kind>
     <Name>7</Name>
-    <Value>127.500000000</Value>
+    <Value>150.000000000</Value>
 </Widget>
 <Widget>
     <Kind>5</Kind>
     <Name>8</Name>
-    <Value>180.093750000</Value>
+    <Value>150.000000000</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -83,17 +83,17 @@
 <Widget>
     <Kind>2</Kind>
     <Name>RAD1</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>RAD2</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>RAD3</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -103,6 +103,6 @@
 <Widget>
     <Kind>6</Kind>
     <Name>RSLIDER</Name>
-    <HighValue>185.911361694</HighValue>
-    <LowValue>61.551719666</LowValue>
+    <HighValue>236.157638550</HighValue>
+    <LowValue>92.955665588</LowValue>
 </Widget>

@@ -31,6 +31,7 @@
 #include "ofxUIImageSlider.h"
 #include "ofxUIFPSSlider.h"
 #include "ofxUIMinimalSlider.h"
+#include "ofxUIMinimalIntSlider.h"
 #include "ofxUICircleSlider.h"
 #include "ofxUIBiLabelSlider.h"
 #include "ofxUIRangeSlider.h"
