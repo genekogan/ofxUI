@@ -89,6 +89,8 @@ void ofxUIMinimalSlider::init(string _name, float _min, float _max, float *_valu
     bRoundedToNearestInt = false;
     bClampValue = false;
     bSticky = false;
+    
+    setInternalValueFromValue();
 }
 
 void ofxUIMinimalSlider::drawFill()
@@ -97,7 +99,8 @@ void ofxUIMinimalSlider::drawFill()
     {
         ofxUIFill();
         ofxUISetColor(color_fill);
-        ofxUIDrawRect(rect->getX(), rect->getY(), rect->getWidth()*MIN(MAX(value, 0.0), 1.0), rect->getHeight());
+        //ofxUIDrawRect(rect->getX(), rect->getY(), rect->getWidth()*MIN(MAX(value, 0.0), 1.0), rect->getHeight());
+        ofxUIDrawRect(rect->getX(), rect->getY(), rect->getWidth()*MIN(MAX(internalValue, 0.0), 1.0), rect->getHeight());
     }
 }
 
@@ -107,7 +110,8 @@ void ofxUIMinimalSlider::drawFillHighlight()
     {
         ofxUIFill();
         ofxUISetColor(color_fill_highlight);
-        ofxUIDrawRect(rect->getX(), rect->getY(), rect->getWidth()*MIN(MAX(value, 0.0), 1.0), rect->getHeight());
+//        ofxUIDrawRect(rect->getX(), rect->getY(), rect->getWidth()*MIN(MAX(value, 0.0), 1.0), rect->getHeight());
+        ofxUIDrawRect(rect->getX(), rect->getY(), rect->getWidth()*MIN(MAX(internalValue, 0.0), 1.0), rect->getHeight());
         ofxUISetColor(label->getColorFillHighlight());
         if(drawLabel)
         {
@@ -133,7 +137,10 @@ void ofxUIMinimalSlider::drawOutlineHighlight()
 
 void ofxUIMinimalSlider::input(float x, float y)
 {
-    value = MIN(1.0, MAX(0.0, rect->percentInside(x, y).x));
+    //value = MIN(1.0, MAX(0.0, rect->percentInside(x, y).x));
+    internalValue = MIN(1.0, MAX(0.0, rect->percentInside(x, y).x));
+    value = pow((float) internalValue, warp); //ofLerp(min, max, pow((float) internalValue, warp));
+
     updateValueRef();
     updateLabel();
 }

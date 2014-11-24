@@ -16,7 +16,7 @@ void ofApp::setup()
     
     gui->setFont("GUI/faucet.ttf");                     //This loads a new font and sets the GUI font
     gui->setFontSize(OFX_UI_FONT_LARGE, 18);            //These call are optional, but if you want to resize the LARGE, MEDIUM, and SMALL fonts, here is how to do it. 
-    gui->setFontSize(OFX_UI_FONT_MEDIUM, 14);           
+    gui->setFontSize(OFX_UI_FONT_MEDIUM, 14);
     gui->setFontSize(OFX_UI_FONT_SMALL, 10);            //SUPER IMPORTANT NOTE: CALL THESE FUNTIONS BEFORE ADDING ANY WIDGETS, THIS AFFECTS THE SPACING OF THE GUI
     
     gui->addLabel("CUSTOM FONT", OFX_UI_FONT_LARGE);

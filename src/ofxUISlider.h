@@ -99,12 +99,27 @@ public:
     virtual void loadState(ofxXmlSettings *XML);
 #endif    
     
+    void setWarp(float warp) {
+        this->warp = warp;
+        setInternalValueFromValue();
+    }
+    void setInternalValueFromValue() {
+        internalValue = pow((float)value, 1.0f/warp);
+    }
+    
+    
 protected:
     bool bSticky;
     double stickyValue;
     bool bRoundedToNearestInt;
     bool bClampValue;
     double value, increment;
+    
+    
+    double internalValue;
+    float warp;
+    
+    
     T *valueRef;
     bool useReference;
 	T max, min;

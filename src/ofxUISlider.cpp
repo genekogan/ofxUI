@@ -28,7 +28,7 @@
 template<typename T>
 ofxUISlider_<T>::ofxUISlider_() : ofxUIWidgetWithLabel()
 {
-    
+    warp = 1.0;
 }
 
 template<typename T>
@@ -107,6 +107,8 @@ void ofxUISlider_<T>::init(string _name, T _min, T _max, T *_value, float w, flo
     bClampValue = true;
     bSticky = false;
     stickyValue = MAX(10.0*ceil(increment), 1.0);
+    
+    setInternalValueFromValue();
 }
 
 template<typename T>
@@ -200,6 +202,7 @@ void ofxUISlider_<T>::update()
     if(useReference)
     {
         value = ofxUIMap(*valueRef, min, max, 0.0, 1.0, bClampValue);
+        setInternalValueFromValue();
         updateLabel();
     }
 }
@@ -251,6 +254,8 @@ void ofxUISlider_<T>::drawOutlineHighlight()
     }
 }
 
+
+/*
 template<typename T>
 void ofxUISlider_<T>::drawFill()
 {
@@ -290,6 +295,50 @@ void ofxUISlider_<T>::drawFillHighlight()
         }
     }
 }
+*/
+
+template<typename T>
+void ofxUISlider_<T>::drawFill()
+{
+    if(draw_fill && value > 0.0)
+    {
+        ofxUIFill();
+        ofxUISetColor(color_fill);
+        if(orientation == OFX_UI_ORIENTATION_HORIZONTAL)
+        {
+            ofxUIDrawRect(rect->getX(), rect->getY(), rect->getWidth()*MIN(MAX(internalValue, 0.0), 1.0), rect->getHeight());
+        }
+        else
+        {
+            ofxUIDrawRect(rect->getX(), rect->getY()+rect->getHeight(), rect->getWidth(), -rect->getHeight()*MIN(MAX(internalValue, 0.0), 1.0));
+        }
+    }
+}
+
+template<typename T>
+void ofxUISlider_<T>::drawFillHighlight()
+{
+    if(draw_fill_highlight)
+    {
+        ofxUIFill();
+        ofxUISetColor(color_fill_highlight);
+        if(orientation == OFX_UI_ORIENTATION_HORIZONTAL)
+        {
+            ofxUIDrawRect(rect->getX(), rect->getY(), rect->getWidth()*MIN(MAX(internalValue, 0.0), 1.0), rect->getHeight());
+        }
+        else
+        {
+            ofxUIDrawRect(rect->getX(), rect->getY()+rect->getHeight(), rect->getWidth(), -rect->getHeight()*MIN(MAX(internalValue, 0.0), 1.0));
+        }
+        if(kind == OFX_UI_WIDGET_SLIDER_V)
+        {
+            label->drawString(rect->getX()+rect->getWidth()+padding, label->getRect()->getHeight()/2.0+rect->getY()+rect->getHeight()-rect->getHeight()*MIN(MAX(internalValue, 0.0), 1.0), valueString);
+        }
+    }
+}
+
+
+
 
 template<typename T>
 void ofxUISlider_<T>::mouseMoved(int x, int y )
@@ -304,7 +353,6 @@ void ofxUISlider_<T>::mouseMoved(int x, int y )
     }
     stateChange();
 }
-
 template<typename T>
 void ofxUISlider_<T>::mouseDragged(int x, int y, int button)
 {
@@ -443,14 +491,19 @@ void ofxUISlider_<T>::input(float x, float y)
 {
     if(orientation == OFX_UI_ORIENTATION_HORIZONTAL)
     {
-        value = rect->percentInside(x, y).x;
+        //value = rect->percentInside(x, y).x;
+        internalValue = rect->percentInside(x, y).x;
     }
     else
     {
-        value = 1.0-rect->percentInside(x, y).y;
+        //value = 1.0-rect->percentInside(x, y).y;
+        internalValue = 1.0-rect->percentInside(x, y).y;
     }
     
-    value = MIN(1.0, MAX(0.0, value));
+    //value = MIN(1.0, MAX(0.0, value));
+    internalValue = MIN(1.0, MAX(0.0, value));
+    value = ofLerp(min, max, pow((float)(internalValue - min)/(float)(max-min), warp));
+
     updateValueRef();
     updateLabel();
 }
@@ -513,6 +566,7 @@ template<typename T>
 void ofxUISlider_<T>::setValue(T _value)
 {
     value = ofxUIMap(_value, min, max, 0.0, 1.0, bClampValue);
+
     updateValueRef();
     updateLabel();
 }
@@ -604,6 +658,7 @@ void ofxUISlider_<T>::setMaxAndMin(T _max, T _min, bool bKeepValueTheSame)
     {
         value = ofxUIMap(value, 0, 1.0, min, max, bClampValue);
         value = ofxUIMap(value, min, max, 0.0, 1.0, bClampValue);
+
         updateValueRef();
         updateLabel();
     }
