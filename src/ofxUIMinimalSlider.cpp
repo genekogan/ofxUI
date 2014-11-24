@@ -90,6 +90,7 @@ void ofxUIMinimalSlider::init(string _name, float _min, float _max, float *_valu
     bClampValue = false;
     bSticky = false;
     
+    warp = 1.0;
     setInternalValueFromValue();
 }
 

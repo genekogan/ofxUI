@@ -28,7 +28,7 @@
 template<typename T>
 ofxUISlider_<T>::ofxUISlider_() : ofxUIWidgetWithLabel()
 {
-    warp = 1.0;
+
 }
 
 template<typename T>
@@ -108,6 +108,7 @@ void ofxUISlider_<T>::init(string _name, T _min, T _max, T *_value, float w, flo
     bSticky = false;
     stickyValue = MAX(10.0*ceil(increment), 1.0);
     
+    warp = 1.0;
     setInternalValueFromValue();
 }
 
@@ -499,10 +500,9 @@ void ofxUISlider_<T>::input(float x, float y)
         //value = 1.0-rect->percentInside(x, y).y;
         internalValue = 1.0-rect->percentInside(x, y).y;
     }
-    
-    //value = MIN(1.0, MAX(0.0, value));
-    internalValue = MIN(1.0, MAX(0.0, value));
-    value = ofLerp(min, max, pow((float)(internalValue - min)/(float)(max-min), warp));
+ 
+    internalValue = MIN(1.0, MAX(0.0, rect->percentInside(x, y).x));
+    value = pow((float) internalValue, warp); //ofLerp(min, max, pow((float) internalValue, warp));
 
     updateValueRef();
     updateLabel();
