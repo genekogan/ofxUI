@@ -41,8 +41,8 @@ public:
 	void setParent(ofxUIWidget *_parent);
     virtual void setShowValue(bool _showValue);
     bool getShowValue();
-    
-protected:   
+
+protected:
     bool autoSize;
     bool showValue;
         

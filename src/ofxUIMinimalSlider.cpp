@@ -139,6 +139,7 @@ void ofxUIMinimalSlider::drawOutlineHighlight()
 void ofxUIMinimalSlider::input(float x, float y)
 {
     //value = MIN(1.0, MAX(0.0, rect->percentInside(x, y).x));
+
     internalValue = MIN(1.0, MAX(0.0, rect->percentInside(x, y).x));
     value = pow((float) internalValue, warp); //ofLerp(min, max, pow((float) internalValue, warp));
 

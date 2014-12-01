@@ -601,6 +601,7 @@ void ofxUICanvas::draw() {
 
     vector<ofxUIWidget *>::reverse_iterator it = widgets.rbegin();
     vector<ofxUIWidget *>::reverse_iterator eit = widgets.rend();
+    
     for(; it != eit; ++it) {
         if((*it)->isVisible() && ((*it)->getRect()->rInside(*rect) || (*it)->isModal())) {
             (*it)->draw();
@@ -922,7 +923,6 @@ void ofxUICanvas::autoSizeToFitWidgets()
             float widgetpaddingwidth = wrp->getX()+wrp->getWidth() - rect->getX();
             float widgetpaddingheight = wrp->getY()+wrp->getHeight() - rect->getY();
             
-            
             if(widgetwidth > maxWidth)
             {
                 maxWidth = widgetwidth;
@@ -1163,7 +1163,6 @@ ofxUIWidget* ofxUICanvas::addWidgetPosition(ofxUIWidget *widget, ofxUIWidgetPosi
             {
                 ofxUIRectangle *lastRect = lastAdded->getRect();
                 widgetRect->x = lastPaddedRect->getX()+lastPaddedRect->getWidth()-rect->getX()+widgetSpacing;
-                
                 widgetRect->y = lastRect->getY()-rect->getY();
                 break;
             }

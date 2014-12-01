@@ -106,6 +106,9 @@ public:
     void setInternalValueFromValue() {
         internalValue = pow((float)value, 1.0f/warp);
     }
+    void setReference(T *valueRef) {
+        this->valueRef = valueRef;
+    }
     
     
 protected:
